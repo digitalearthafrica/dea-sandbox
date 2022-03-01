@@ -1,7 +1,7 @@
 # misc
 access
 affine
-aiobotocore[boto3,awscli]==1.4.1 # due to s3fs
+aiobotocore[boto3,awscli]==2.1.1 # due to s3fs
 alabaster
 colorama
 dill
@@ -11,7 +11,7 @@ param
 pydash
 pyyaml
 pyrsistent
-python-dateutil==2.8.0 # because of pysal
+python-dateutil==2.8.2 # because of pysal
 s3fs
 tqdm
 urllib3
@@ -36,8 +36,8 @@ cattrs
 structlog
 
 # Scientific Stack
-dask[complete]==2.30.0 # due to dask-gateway
-distributed==2.30.0 # due to dask-gateway
+dask[complete]==2022.2.1 # due to dask-gateway
+distributed==2022.2.1 # due to dask-gateway
 dask-image
 dask-ml
 numba
@@ -82,4 +82,4 @@ contextily
 
 --extra-index-url="https://google-coral.github.io/py-repo/" tflite_runtime
 
-https://github.com/ubarsc/rios/archive/rios-1.4.10.tar.gz
+https://github.com/ubarsc/rios/archive/rios-1.4.12.tar.gz
