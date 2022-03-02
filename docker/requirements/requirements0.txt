@@ -1,3 +1,0 @@
-# tensorflow dependencies
-cython --no-binary=cython
-numpy==1.22.2
