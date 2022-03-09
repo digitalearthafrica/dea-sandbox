@@ -15,3 +15,10 @@ up-k8s:  ## Start up an environment without a database
 
 clean:
 	docker-compose down --rmi all -v
+
+pip_compile:
+	pip-compile --verbose \
+		--extra-index-url=https://google-coral.github.io/py-repo/ \
+		--extra-index-url=https://packages.dea.ga.gov.au \
+		--output-file docker/requirements.txt
+		docker/requirements.in

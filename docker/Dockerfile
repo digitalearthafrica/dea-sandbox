@@ -4,7 +4,7 @@ FROM osgeo/gdal:ubuntu-full-3.4.1
 # RUN chmod +x /tini
 RUN apt update \
   && apt install -y --fix-missing --no-install-recommends \
-    python3-pip cython3 python3-numpy python3-matplotlib \
+    python3-pip cython3 python3-numpy python3-matplotlib python3-dev \
     # developer convenience
     postgresql-client-12 \
     postgresql-12 \
@@ -33,13 +33,16 @@ RUN apt update \
     rsync \
     libtiff-tools \
     # rgsislib dependencies
-    libgsl-dev \
-    libcgal-dev \
-    libboost-dev \
-    libmuparser2v5 \
-    libboost-system1.71.0 \
-    libboost-filesystem1.71.0 \
     libboost-date-time1.71.0 \
+    libboost-dev \
+    libboost-filesystem1.71.0 \
+    libboost-system1.71.0 \
+    libcgal-dev \
+    libgsl-dev \
+    libgeos-dev \
+    libmuparser2v5 \
+    libpq-dev \
+    libproj-dev \
     # for cython to work need compilers
     build-essential \
     # for pyRAT install or something
@@ -48,23 +51,20 @@ RUN apt update \
      #install ffmpeg the normal way
     ffmpeg \
   && rm -rf /var/lib/apt/lists/*
-
 RUN pip install pip-tools
 
-COPY requirements* /
+COPY requirements.in /
 RUN pip-compile --verbose \
   --extra-index-url=https://google-coral.github.io/py-repo/ \
   --extra-index-url=https://packages.dea.ga.gov.au \
-  --generate-hashes \
-  --output-file=/requirements.txt \
-  /requirements.in \
-  && pip-compile --verbose \
-  --extra-index-url=https://google-coral.github.io/py-repo/ \
-  --extra-index-url=https://packages.dea.ga.gov.au \
-  --generate-hashes \
-  --output-file=/requirements.txt \
-  /requirements2.in
+  /requirements.in
+# RUN pip install -r /requirements.txt
 
+# COPY requirements2.in /
+# RUN pip-compile --verbose \
+#   --extra-index-url=https://google-coral.github.io/py-repo/ \
+#   --extra-index-url=https://packages.dea.ga.gov.au \
+#   /requirements2.in
 
 # RUN jupyter labextension install jupyterlab-theme-toggle
 # RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
