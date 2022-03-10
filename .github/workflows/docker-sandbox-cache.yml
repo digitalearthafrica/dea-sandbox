@@ -15,7 +15,7 @@ on:
       - '.github/workflows/bin/**'
 
 env:
-  ORG: geoscienceaustralia
+  ORG: geoscienceafrica
   IMAGE: sandbox
   IMAGE_DEV: sandbox-dev
   DOCKER_USER: gadockersvc

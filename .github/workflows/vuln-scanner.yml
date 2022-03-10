@@ -12,7 +12,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.8
         continue-on-error: true
         with:
-          image-ref: "geoscienceaustralia/sandbox:latest"
+          image-ref: "geoscienceafrica/sandbox:latest"
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
