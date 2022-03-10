@@ -20,5 +20,5 @@ pip_compile:
 	pip-compile --verbose \
 		--extra-index-url=https://google-coral.github.io/py-repo/ \
 		--extra-index-url=https://packages.dea.ga.gov.au \
-		--output-file docker/requirements.txt
+		--output-file docker/requirements.txt \
 		docker/requirements.in
