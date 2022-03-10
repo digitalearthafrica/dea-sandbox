@@ -18,8 +18,10 @@ cognitojwt==1.4.1 # Used for user authentication
 colorama
 contextily
 dask-gateway-server==0.9.0
+hdstats==0.2.1
 dask-gateway==0.9.0
 dask-image
+kombu==4.6.11
 dask-labextension==5.1.0
 dask-ml
 dask[complete]==2.30.0 # due to dask-gateway
