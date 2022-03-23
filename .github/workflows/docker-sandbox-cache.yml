@@ -1,150 +1,95 @@
-name: Sandbox build and push latest
-
-on:
-  push:
-    paths:
-      - 'docker/**'
-      - '.trivyignore'
-      - '.github/workflows/docker-sandbox-cache.yml'
-      - '.github/workflows/bin/**'
-  pull_request:
-    paths:
-      - 'docker/**'
-      - '.trivyignore'
-      - '.github/workflows/docker-sandbox-cache.yml'
-      - '.github/workflows/bin/**'
+name : Scripts Test and Push
 
 env:
-  ORG: geoscienceafrica
-  IMAGE: sandbox
-  IMAGE_DEV: sandbox-dev
-  DOCKER_USER: gadockersvc
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  IMAGE_NAME: digitalearthafrica/deafrica-sandbox
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - created
 
 jobs:
-  build-and-push:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
 
-    - name: Update PATH
-      run: |
-        echo "${GITHUB_WORKSPACE}/.github/workflows/bin" >> $GITHUB_PATH
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Config
-      id: cfg
-      run: |
-        ci-helper export_cfg
-
-    - name: Env Dump (for debugging)
-      run: |
-        echo branch: ${BRANCH}
-        echo stage1: ${im_stage1} ${im_stage1_fallback}
-        echo stage2: ${im_stage2} ${im_stage2_fallback}
-        echo build_info: ${build_info}
-        echo push_image: cfg:${{ steps.cfg.outputs.push_image }} env:$push_image
-        echo push_cache: cfg:${{ steps.cfg.outputs.push_cache }} env:$push_cache
-        echo pull_cache: cfg:${{ steps.cfg.outputs.pull_cache }} env:$pull_cache
-
-    - name: DockerHub Login
-      if: steps.cfg.outputs.push_cache == 'yes' || steps.cfg.outputs.push_image == 'yes'
-      uses: docker/login-action@v1
+    - name: Check formatting
+      uses: rickstaa/action-black@v1
+      id: action_black
       with:
-        username: ${{ env.DOCKER_USER }}
-        password: ${{ secrets.DockerPassword }}
+        black_args: "--check ."
 
-    - name: Pull Cache (stage1)
-      if: steps.cfg.outputs.pull_cache == 'yes'
+    # Set up a cache
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Cache Docker layers
+      uses: pat-s/always-upload-cache@v2.1.5
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
+    - name: Build Test Docker
+      uses: docker/build-push-action@v2
+      with:
+        context: docker
+        tags: ${{ env.IMAGE_NAME }}
+        outputs: type=docker
+        cache-from: |
+          type=local,src=/tmp/.buildx-cache
+        cache-to: |
+          type=local,dest=/tmp/.buildx-cache-new
+
+    # This ugly bit is necessary if you don't want your cache to grow forever
+    # till it hits GitHub's limit of 5GB.
+    # Temp fix
+    # https://github.com/docker/build-push-action/issues/252
+    # https://github.com/moby/buildkit/issues/1896
+    - name: Move cache
       run: |
-        ci-helper pull_docker_cache ${im_stage1} ${im_stage1_fallback}
+        rm -rf /tmp/.buildx-cache
+        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+  push:
+    if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    - name: Build Sandbox Docker (stage1)
-      run: |
-        # build and cache first stage (env_builder)
-        docker build \
-          --target env_builder \
-          --cache-from ${im_stage1} \
-          --tag        ${im_stage1} \
-          ./docker/
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
 
-    - name: DockerHub Push Cache (stage1)
-      if: steps.cfg.outputs.push_cache == 'yes'
-      run: |
-        docker push ${im_stage1}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-    - name: Pull Cache (stage2)
-      if: steps.cfg.outputs.pull_cache == 'yes'
-      run: |
-        # Remove old layers first to help with disk usage
-        echo "Before Prune:"
-        docker images
-        docker system prune --force
-        echo "After Prune:"
-        docker images
-        ci-helper pull_docker_cache ${im_stage2} ${im_stage2_fallback}
-        echo "After Pull:"
-        docker images
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: deafricadockersvs
+          password: ${{ secrets.DEAFRICA_DOCKER_PASSWORD }}
 
-    - name: Build Sandbox Docker (stage2)
-      run: |
-        # now build second stage making sure first stage is from cache
-        set -o pipefail
-        docker build \
-          --build-arg BUILD_INFO="${build_info}" \
-          --cache-from ${im_stage1} \
-          --cache-from ${im_stage2} \
-          --tag        ${im_stage2} \
-          ./docker/ 2>&1 | tee docker-build.log || {
-              echo "Docker build failed"
-              tail docker-build.log
+      - name: Get version number for tagging the image
+        run: |
+          git fetch --all --tags
+          pip install setuptools-scm
+          echo "VERSION=$(python setup.py --version | sed s/+/./g)" >> $GITHUB_ENV
 
-              if grep "no space left on device" docker-build.log 2>&1 > /dev/null ; then
-                echo "Out of disk, will retry without cache"
-                docker rmi ${im_stage2}
-                docker system prune
-                docker images
-                docker build \
-                  --build-arg BUILD_INFO="${build_info}" \
-                  --cache-from ${im_stage1} \
-                  --tag        ${im_stage2} \
-                  ./docker/
-              else
-                # some other error, just fail this step
-                false
-              fi
-          }
-
-    - name: DockerHub Push Image (stage2)
-      if: steps.cfg.outputs.push_image == 'yes'
-      run: |
-        docker push ${im_stage2}
-
-    - name: Build Sandbox Docker (sudo)
-      run: |
-        im_sudo=${im_stage2/:/:sudo-}
-        docker build \
-          --build-arg WITH_SUDO=yes \
-          --build-arg BUILD_INFO="${build_info} (sudo)" \
-          --cache-from ${im_stage1} \
-          --cache-from ${im_stage2} \
-          --tag        ${im_sudo} \
-          ./docker/
-
-    - name: DockerHub Push Image (sudo)
-      if: steps.cfg.outputs.push_image == 'yes'
-      run: |
-        im_sudo=${im_stage2/:/:sudo-}
-        docker push ${im_sudo}
-
-
-    - name: Push Extra tags (not all branches)
-      if: steps.cfg.outputs.im_extra != '' && steps.cfg.outputs.push_image == 'yes'
-      run: |
-        im_sudo=${im_stage2/:/:sudo-}
-        im_sudo_extra=${im_extra/:/:sudo-}
-        docker tag "${im_stage2}" "${im_extra}"
-        docker tag "${im_sudo}" "${im_sudo_extra}"
-
-        docker push "${im_extra}"
-        docker push "${im_sudo_extra}"
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          target: base
+          push: true
+          tags: ${{ env.IMAGE_NAME }}:latest,${{ env.IMAGE_NAME }}:${{ env.VERSION }}
