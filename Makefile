@@ -7,6 +7,9 @@ build:  ## Build the default sudo image using Docker Compose
 up:  ## Start up an environment with a database
 	docker-compose up
 
+down:  ## Bring down the system
+	docker-compose down
+
 shell:
 	docker-compose run sandbox bash
 
@@ -22,3 +25,7 @@ pip_compile:
 		--extra-index-url=https://packages.dea.ga.gov.au \
 		--output-file docker/requirements.txt \
 		docker/requirements.in
+
+
+test:
+	pytest --nbval-lax *.ipynb

@@ -1,4 +1,4 @@
-FROM osgeo/gdal:ubuntu-full-3.4.1
+FROM osgeo/gdal:ubuntu-full-3.4.2
 
 RUN apt update \
   && apt install -y curl \
@@ -76,8 +76,8 @@ RUN if [ "$WITH_SUDO" = "yes" ]; then \
   echo "${nb_user} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
 ;fi
 
-ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /tini
-RUN chmod +x /tini
+ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /bin/tini
+RUN chmod +x /bin/tini
 
 USER $nb_user
 
