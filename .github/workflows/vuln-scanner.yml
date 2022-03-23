@@ -8,6 +8,9 @@ jobs:
   vuln-scan:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Run vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.8
         continue-on-error: true
