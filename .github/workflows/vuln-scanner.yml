@@ -2,7 +2,7 @@ name: Vulnerability Scan
 
 on:
   schedule:
-    - cron: 07 7 * * * 
+    - cron: 07 7 * * *
 
 jobs:
   vuln-scan:
@@ -15,7 +15,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.8
         continue-on-error: true
         with:
-          image-ref: "geoscienceafrica/sandbox:latest"
+          image-ref: "digitalearthafrica/deafrica-sandbox:latest"
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
