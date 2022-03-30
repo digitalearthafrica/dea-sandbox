@@ -66,7 +66,7 @@ ARG nb_uid=1000
 ARG nb_gid=100
 RUN useradd -m -s /bin/bash -N -g $nb_gid -u $nb_uid $nb_user
 
-COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/local/bin/
+COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
 COPY assets/overrides.json /env/share/jupyter/lab/settings/
 
 WORKDIR "/home/$nb_user"
