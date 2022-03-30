@@ -25,7 +25,3 @@ pip_compile:
 		--extra-index-url=https://packages.dea.ga.gov.au \
 		--output-file docker/requirements.txt \
 		docker/requirements.in
-
-
-test:
-	pytest --nbval-lax *.ipynb

@@ -24,7 +24,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Cache Docker layers
+    - name: Get Cache Docker layers
       uses: pat-s/always-upload-cache@v2.1.5
       with:
         path: /tmp/.buildx-cache
@@ -38,7 +38,7 @@ jobs:
         username: deafricadockersvs
         password: ${{ secrets.DEAFRICA_DOCKER_PASSWORD }}
 
-    - name: Build Test Docker
+    - name: Build and Push Docker
       uses: docker/build-push-action@v2
       with:
         context: docker
@@ -48,6 +48,19 @@ jobs:
           type=local,dest=/tmp/.buildx-cache-new
         push: true
         tags: ${{ env.IMAGE_NAME }}:latest
+
+    - name: Build and Push Docker
+      uses: docker/build-push-action@v2
+      with:
+        build-args: |
+          WITH_SUDO=yes
+        context: docker
+        cache-from: |
+          type=local,src=/tmp/.buildx-cache
+        cache-to: |
+          type=local,dest=/tmp/.buildx-cache-new
+        push: true
+        tags: ${{ env.IMAGE_NAME }}:sudo-latest
 
     # This ugly bit is necessary if you don't want your cache to grow forever
     # till it hits GitHub's limit of 5GB.

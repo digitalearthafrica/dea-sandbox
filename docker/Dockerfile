@@ -71,6 +71,8 @@ COPY assets/overrides.json /env/share/jupyter/lab/settings/
 
 WORKDIR "/home/$nb_user"
 
+RUN pip install -e /home/$nb_user/Tools/
+
 ARG WITH_SUDO="no"
 RUN if [ "$WITH_SUDO" = "yes" ]; then \
   echo "${nb_user} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
