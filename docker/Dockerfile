@@ -5,7 +5,7 @@ RUN apt update \
   && curl -fsSL https://deb.nodesource.com/setup_12.x | bash - \
   && apt update \
   && apt install -y --fix-missing --no-install-recommends \
-    python3-pip cython3 python3-numpy python3-matplotlib python3-dev \
+    python3-pip python3-dev \
     # developer convenience
     postgresql-client-12 \
     postgresql-12 \
