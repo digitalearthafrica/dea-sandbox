@@ -11,7 +11,7 @@ down:  ## Bring down the system
 	docker-compose down
 
 shell:
-	docker-compose run sandbox bash
+	docker-compose exec sandbox bash
 
 up-k8s:  ## Start up an environment without a database
 	docker-compose -f docker-compose.yml up

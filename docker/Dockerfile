@@ -58,28 +58,31 @@ RUN apt update \
 COPY requirements.txt /
 RUN pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
+RUN wget -O /tmp/main.zip https://github.com/digitalearthafrica/deafrica-sandbox-notebooks/archive/refs/heads/main.zip && \
+  unzip /tmp/main.zip -d /tmp && \
+  pip install -e /tmp/deafrica-sandbox-notebooks-main/Tools/ && \
+  rm -rf /tmp/main.zip /tmp/deafrica-sandbox-notebooks-main
+
 RUN jupyter labextension install jupyterlab-theme-toggle
 RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
+
+COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
+COPY assets/overrides.json /env/share/jupyter/lab/settings/
 
 ARG nb_user=jovyan
 ARG nb_uid=1000
 ARG nb_gid=100
 RUN useradd -m -s /bin/bash -N -g $nb_gid -u $nb_uid $nb_user
 
-COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
-COPY assets/overrides.json /env/share/jupyter/lab/settings/
+RUN wget -O /bin/tini https://github.com/krallin/tini/releases/download/v0.19.0/tini && \
+  chmod +x /bin/tini
 
 WORKDIR "/home/$nb_user"
-
-RUN pip install -e /home/$nb_user/Tools/
 
 ARG WITH_SUDO="no"
 RUN if [ "$WITH_SUDO" = "yes" ]; then \
   echo "${nb_user} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
 ;fi
-
-ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /bin/tini
-RUN chmod +x /bin/tini
 
 USER $nb_user
 
