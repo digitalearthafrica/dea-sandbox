@@ -2,6 +2,7 @@ FROM osgeo/gdal:ubuntu-full-3.4.2
 
 RUN apt update \
   && apt install -y curl \
+  && apt remove -y python3-numpy \
   && curl -fsSL https://deb.nodesource.com/setup_12.x | bash - \
   && apt update \
   && apt install -y --fix-missing --no-install-recommends \
