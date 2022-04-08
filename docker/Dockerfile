@@ -56,8 +56,10 @@ RUN apt update \
   && apt autoremove \
   && rm -rf /var/lib/{apt,dpkg,cache}/
 
+COPY requirements0.txt /
 COPY requirements.txt /
-RUN pip install -r /requirements.txt && rm -rf /root/.cache/pip
+
+RUN pip install -r /requirements0.txt && pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
 RUN wget -O /tmp/main.zip https://github.com/digitalearthafrica/deafrica-sandbox-notebooks/archive/refs/heads/main.zip && \
   unzip /tmp/main.zip -d /tmp && \
