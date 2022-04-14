@@ -29,6 +29,7 @@ dataclasses
 datacube-stats==1.0.2
 datacube[performance,s3]==1.8.6
 datashader==0.13.0
+deafrica-tools==0.1.2
 descartes
 dill
 distributed==2.30.0 # due to dask-gateway
@@ -120,6 +121,7 @@ pysal
 pysheds
 python-dateutil
 python-geohash
+pyTMD==1.0.6
 pyviz_comms==2.0.1
 pyyaml
 rioxarray

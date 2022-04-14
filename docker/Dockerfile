@@ -61,11 +61,6 @@ COPY requirements.txt /
 
 RUN pip install -r /requirements0.txt && pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
-RUN wget -O /tmp/main.zip https://github.com/digitalearthafrica/deafrica-sandbox-notebooks/archive/refs/heads/main.zip && \
-  unzip /tmp/main.zip -d /tmp && \
-  pip install -e /tmp/deafrica-sandbox-notebooks-main/Tools/ && \
-  rm -rf /tmp/main.zip /tmp/deafrica-sandbox-notebooks-main
-
 RUN jupyter labextension install jupyterlab-theme-toggle
 RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
 
