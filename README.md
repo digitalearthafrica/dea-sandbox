@@ -1,6 +1,6 @@
 # DEA Sandbox
 
-![Sandbox build and push latest](https://github.com/digitalearthafrica/dea-sandbox/workflows/Sandbox%20build%20and%20push%20latest/badge.svg)
+[![Test and Push](https://github.com/digitalearthafrica/deafrica-sandbox/actions/workflows/docker-sandbox-cache.yml/badge.svg)](https://github.com/digitalearthafrica/deafrica-sandbox/actions/workflows/docker-sandbox-cache.yml)
 ![Vulnerability Scan](https://github.com/digitalearthafrica/dea-sandbox/workflows/Vulnerability%20Scan/badge.svg)
 
 Digital Earth Africa Sandbox Docker build, configuration and planning.
