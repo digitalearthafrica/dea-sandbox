@@ -1443,6 +1443,7 @@ rtree==1.0.0
     # via
     #   -r /requirements.in
     #   spaghetti
+rsgislib==4.1.95
 ruamel-yaml==0.17.21
     # via
     #   eodatasets3

@@ -24,7 +24,7 @@ this will be pushed to `0.0.6` and `sudo-0.0.6`.
 ## Local environment
 
 A simple local environment that can be used to test the JupyterHub system in can be started using Docker Compose
-with the command `docker-compose up` and browsing to http://localhost:8888 and adding the token that is displayed
+with the command `docker-compose up` and browsing to http://localhost:9988 and adding the token that is displayed
 on your terminal after starting the system.
 
 To run connected to a database in one of the DEA systems, you'll need to start a Kubernetes port forwading process
