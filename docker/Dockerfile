@@ -1,5 +1,7 @@
 FROM osgeo/gdal:ubuntu-full-3.4.2
 
+ENV SHELL=bash
+
 RUN apt update \
   && apt install -y curl \
   && apt remove -y python3-numpy \
