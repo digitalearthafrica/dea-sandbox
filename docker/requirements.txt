@@ -428,7 +428,6 @@ gdal==3.4.3
     #   deafrica-tools
     #   digitalearthau
     #   odc-stats
-    #   rsgislib
 geoalchemy2==0.12.1
     # via datacube-ows
 geographiclib==1.52
@@ -485,7 +484,6 @@ h5py==3.7.0
     # via
     #   -r /requirements.in
     #   pytmd
-    #   rsgislib
     #   tensorflow
 hdmedians==0.14.2
     # via -r /requirements.in
@@ -995,7 +993,6 @@ numpy==1.22.4
     #   quantecon
     #   rasterio
     #   rasterstats
-    #   rsgislib
     #   rvlib
     #   s2cloudmask
     #   scikit-image
@@ -1446,9 +1443,7 @@ requests-oauthlib==1.3.1
 requests-unixsocket==0.3.0
     # via jupyter-server
 rios @ https://github.com/ubarsc/rios/archive/rios-1.4.10.tar.gz
-    # via
-    #   -r /requirements.in
-    #   rsgislib
+    # via -r /requirements.in
 rioxarray==0.11.1
     # via -r /requirements.in
 rsa==4.7.2
@@ -1456,8 +1451,6 @@ rsa==4.7.2
     #   awscli
     #   google-auth
     #   python-jose
-rsgislib==4.1.95
-    # via -r /requirements.in
 rtree==1.0.0
     # via
     #   -r /requirements.in
@@ -1732,7 +1725,6 @@ tqdm==4.64.0
     #   odc-stats
     #   panel
     #   quilt3
-    #   rsgislib
     #   segregation
     #   tobler
 traitlets==5.2.2.post1

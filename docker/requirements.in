@@ -126,9 +126,6 @@ pyTMD==1.0.6
 pyviz_comms==2.0.1
 pyyaml
 rioxarray
-# rsgislib is conda only, but was manually packaged as a binary wheel compatible
-# with geobase docker images
-rsgislib==4.1.95
 Rtree
 s2cloudmask
 s3fs
