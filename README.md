@@ -41,7 +41,7 @@ will be mounted at `/home/jovyan`/
 
 ## Testing the digitalearthafrica/deafrica-sandbox-notebooks
 
-To test the DE Africa Analysis Sandbox notebooks in the [DEV sandbox](https://sandbox.dev.digitalearth.africa/) follow the instructions below:
+To test the DE Africa Analysis Sandbox notebooks in the [DEV sandbox](https://sandbox.dev.digitalearth.africa/), follow the instructions below:
 
 - In the [DEV sandbox](https://sandbox.dev.digitalearth.africa/) open a  new terminal.
 - Install the packages `nbmake` , `pytest-xdist` and `pytest-reportlog`:
@@ -53,16 +53,16 @@ To test the DE Africa Analysis Sandbox notebooks in the [DEV sandbox](https://sa
 - Check if everything is set up correctly by instructing `pytest` to simply collect (but not run) all notebooks:
 
     ```
-    pytest --collect-only --nbmake -n=auto **/**/**.ipynb
+    pytest --collect-only --nbmake -n=auto
     ```
     
-- Now that you have validated that `nbmake` and `pytest` are working together and that they can see the notebooks, run the tests for real and save the report: 
+- Now that you have validated that `nbmake` and `pytest` are working together and that they can see all the notebooks, run the test for real and save the report: 
 
     ```
-    pytest --nbmake -n=auto --report-log="pytest_results.txt" **/**/**.ipynb
+    pytest --nbmake -n=auto --report-log="pytest_results.txt"
     ```
 
 
 ### Document warnings in the notebooks
 
-To find the [warnings](https://docs.python.org/3/library/warnings.html#warning-categories) like `FutureWarnings` or `UserWarning` occuring in the notebooks, you will need to run the individual notebooks and document the warnings in an Excel or Google sheet for reference. 
+To find the [warnings](https://docs.python.org/3/library/warnings.html#warning-categories) like `FutureWarnings` or `UserWarning` occuring in the notebooks, you will need to run the individual notebooks and document the warnings in an Excel or Google sheet for future reference. 
