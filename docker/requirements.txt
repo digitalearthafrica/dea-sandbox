@@ -891,8 +891,9 @@ nest-asyncio==1.5.5
     #   ipykernel
     #   jupyter-client
     #   notebook
-netcdf4==1.6.0
+netcdf4==1.5.8
     # via
+    #   -r ./requirements.in
     #   datacube
     #   pytmd
 networkx==2.8.4
