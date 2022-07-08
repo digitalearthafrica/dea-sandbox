@@ -27,9 +27,9 @@ dask-ml
 dask[complete]==2.30.0 # due to dask-gateway
 dataclasses
 datacube-stats==1.0.2
-datacube[performance,s3]==1.8.6
+datacube[performance,s3]==1.8.7
 datashader==0.13.0
-deafrica-tools==0.1.2
+deafrica-tools==0.1.5
 descartes
 dill
 distributed==2.30.0 # due to dask-gateway
@@ -38,6 +38,7 @@ eodatasets3
 fc==1.3.5
 ffmpeg-python
 folium==0.12.1
+gdal==3.4.3
 geohash2
 geojson
 geopy
@@ -88,6 +89,7 @@ nbdime==3.1.1
 nbformat==5.1.3
 nbgitpuller==1.0.2
 nbval==0.9.6
+netcdf4==1.5.8
 numba
 numexpr
 numexpr3
