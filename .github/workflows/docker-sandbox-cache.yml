@@ -93,7 +93,7 @@ jobs:
         cache-to: |
           type=local,dest=/tmp/.buildx-cache-new
         push: true
-        tags: ${{ env.IMAGE_NAME }}:${{ env.RELEASE }}
+        tags: ${{ env.IMAGE_NAME }}:sudo-${{ env.RELEASE }}
 
 
 
