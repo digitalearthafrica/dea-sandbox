@@ -2,6 +2,6 @@
 set -e
 
 # Update deafrica-tools
-pip install deafrica-tools --upgrade
+pip install deafrica-tools --upgrade --quiet
 
 exec "$@"
