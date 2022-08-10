@@ -84,9 +84,12 @@ RUN if [ "$WITH_SUDO" = "yes" ]; then \
   echo "${nb_user} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
 ;fi
 
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+
 USER $nb_user
 
-ENTRYPOINT ["/bin/tini", "-s", "--", "with_bootstrap"]
+ENTRYPOINT ["/bin/tini", "-s", "--", "with_bootstrap", "/usr/local/bin/docker-entrypoint.sh"]
 CMD ["jupyter", "lab", \
 "--ip=0.0.0.0", \
 "--port=9988", \
