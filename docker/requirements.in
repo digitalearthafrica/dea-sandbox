@@ -27,9 +27,9 @@ dask-ml
 dask[complete]==2.30.0 # due to dask-gateway
 dataclasses
 datacube-stats==1.0.2
-datacube[performance,s3]==1.8.8
+datacube[performance,s3]
 datashader==0.13.0
-deafrica-tools==0.1.5
+deafrica-tools
 descartes
 dill
 distributed==2.30.0 # due to dask-gateway
@@ -102,6 +102,7 @@ odc-stats[ows]
 odc-ui
 opencv-contrib-python-headless
 opencv-python-headless
+osmnx
 otps==0.3.2
 OWSLib
 pandana
@@ -121,6 +122,7 @@ pyproj
 pyrsistent
 pysal
 pysheds
+pystac-client
 python-dateutil
 python-geohash
 pyTMD==1.0.6
