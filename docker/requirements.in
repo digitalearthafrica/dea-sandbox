@@ -1,7 +1,7 @@
 # rio-cogeo
 access
 affine
-aiobotocore[boto3,awscli]
+aiobotocore[boto3,awscli]==2.4.2
 alabaster
 astropy
 autopep8
