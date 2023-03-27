@@ -1,17 +1,22 @@
-FROM osgeo/gdal:ubuntu-full-3.4.2
+FROM osgeo/gdal:ubuntu-full-3.6.3
 
 ENV SHELL=bash
+
+ENV DEBIAN_FRONTEND=non-interactive
 
 RUN apt update \
   && apt install -y curl \
   && apt remove -y python3-numpy \
-  && curl -fsSL https://deb.nodesource.com/setup_12.x | bash - \
+  && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   && apt update \
   && apt install -y --fix-missing --no-install-recommends \
     python3-pip python3-dev \
+  && python -m pip install --upgrade pip \
+  && apt update \
+  && apt install -y --fix-missing --no-install-recommends \
     # developer convenience
-    postgresql-client-12 \
-    postgresql-12 \
+    postgresql-client \
+    postgresql \
     less \
     wget \
     vim \
@@ -36,10 +41,10 @@ RUN apt update \
     rsync \
     libtiff-tools \
     # rgsislib dependencies
-    libboost-date-time1.71.0 \
+    libboost-date-time1.74.0 \
     libboost-dev \
-    libboost-filesystem1.71.0 \
-    libboost-system1.71.0 \
+    libboost-filesystem1.74.0 \
+    libboost-system1.74.0 \
     libcgal-dev \
     libgsl-dev \
     libgeos-dev \
@@ -51,7 +56,9 @@ RUN apt update \
     # for pyRAT install or something
     libfftw3-dev \
     liblapack-dev \
-     #install ffmpeg the normal way
+    # install libhdf5
+    libhdf5-serial-dev\
+    # install ffmpeg the normal way
     ffmpeg \
     nodejs \
   && apt clean autoclean \
@@ -60,6 +67,17 @@ RUN apt update \
 
 COPY requirements0.txt /
 COPY requirements.txt /
+
+# install pytables 3.6.1
+ENV HDF5_DIR=/usr/lib/x86_64-linux-gnu/hdf5/serial/
+RUN pip install Cython && pip install numpy
+RUN wget -O pytables.zip https://github.com/PyTables/PyTables/archive/refs/tags/v3.6.1.zip
+RUN unzip pytables.zip
+WORKDIR "/PyTables-3.6.1"
+RUN python3 setup.py bdist_wheel
+RUN cd dist/ && python -m pip install tables-3.6.1-cp310-cp310-linux_x86_64.whl
+WORKDIR "/../.."
+RUN rm -rf PyTables-3.6.1 pytables.zip
 
 RUN pip install -r /requirements0.txt && pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
@@ -91,3 +109,4 @@ CMD ["jupyter", "lab", \
 "--ip=0.0.0.0", \
 "--port=9988", \
 "--no-browser"]
+
