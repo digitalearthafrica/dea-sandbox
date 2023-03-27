@@ -100,7 +100,9 @@ babel==2.12.1
 backcall==0.2.0
     # via ipython
 beautifulsoup4==4.12.0
-    # via libpysal
+    # via
+    #   libpysal
+    #   nbconvert
 black==23.1.0
     # via -r ./requirements.in
 bleach==6.0.0
@@ -291,6 +293,8 @@ dask-labextension==6.1.0
     # via -r ./requirements.in
 dask-ml==2023.3.24
     # via -r ./requirements.in
+data==0.4
+    # via latex
 dataclasses==0.6
     # via -r ./requirements.in
 datacube[celery,performance,s3]==1.8.12
@@ -321,7 +325,9 @@ deafrica-tools==1.0.4
 debugpy==1.6.6
     # via ipykernel
 decorator==5.1.1
-    # via ipython
+    # via
+    #   data
+    #   ipython
 deepdiff==6.3.0
     # via datacube-ows
 defusedxml==0.7.1
@@ -359,7 +365,6 @@ ecdsa==0.18.0
 entrypoints==0.4
     # via
     #   jupyterhub
-    #   nbconvert
     #   numcodecs
 eodatasets3==0.29.6
     # via
@@ -418,8 +423,12 @@ fsspec==2023.3.0
     #   deafrica-tools
     #   odc-stats
     #   s3fs
+funcsigs==1.0.2
+    # via data
 future==0.18.3
-    # via ffmpeg-python
+    # via
+    #   ffmpeg-python
+    #   latex
 gast==0.4.0
     # via tensorflow
 gdal==3.6.3
@@ -633,6 +642,7 @@ jupyter-client==8.1.0
     #   jupyter-console
     #   jupyter-server
     #   nbclassic
+    #   nbclient
     #   nbval
     #   notebook
     #   qtconsole
@@ -656,6 +666,7 @@ jupyter-core==5.3.0
     #   jupyter-server
     #   jupyterlab
     #   nbclassic
+    #   nbclient
     #   nbconvert
     #   nbformat
     #   notebook
@@ -725,6 +736,8 @@ jupyterlab-language-pack-fr-fr==3.1.post0
     # via -r ./requirements.in
 jupyterlab-logout==0.5.0
     # via -r ./requirements.in
+jupyterlab-pygments==0.2.2
+    # via nbconvert
 jupyterlab-server==2.16.3
     # via jupyterlab
 jupyterlab-system-monitor==0.8.0
@@ -751,6 +764,8 @@ lark==1.1.5
     #   datacube
     #   datacube-ows
 lark-parser==0.12.0
+    # via -r ./requirements.in
+latex==0.7.0
     # via -r ./requirements.in
 lazy-loader==0.2
     # via scikit-image
@@ -815,6 +830,7 @@ markupsafe==2.1.2
     # via
     #   jinja2
     #   mako
+    #   nbconvert
     #   werkzeug
 matplotlib==3.7.1
     # via
@@ -842,7 +858,7 @@ mercantile==1.2.1
     # via contextily
 mgwr==2.1.2
     # via pysal
-mistune==0.8.4
+mistune==2.0.5
     # via nbconvert
 momepy==0.5.4
     # via pysal
@@ -873,7 +889,9 @@ nbclassic==0.5.3
     # via
     #   jupyterlab
     #   notebook
-nbconvert==5.6.1
+nbclient==0.7.2
+    # via nbconvert
+nbconvert==7.2.10
     # via
     #   -r ./requirements.in
     #   jupyter
@@ -894,6 +912,7 @@ nbformat==5.1.3
     #   jupyterlab-git
     #   jupytext
     #   nbclassic
+    #   nbclient
     #   nbconvert
     #   nbdime
     #   nbval
@@ -1072,7 +1091,7 @@ odc-stac==0.3.5
     #   odc-stats
 odc-stats[ows]==1.0.34
     # via -r ./requirements.in
-odc-ui==0.2.1.dev3659
+odc-ui==0.2.1.dev3530
     # via
     #   -r ./requirements.in
     #   deafrica-tools
@@ -1117,6 +1136,7 @@ packaging==23.0
     #   libpysal
     #   matplotlib
     #   momepy
+    #   nbconvert
     #   pytest
     #   qtconsole
     #   qtpy
@@ -1167,6 +1187,8 @@ pandas==1.5.3
     #   tobler
     #   urbanaccess
     #   xarray
+pandoc==2.3
+    # via -r ./requirements.in
 pandocfilters==1.5.0
     # via nbconvert
 panel==0.14.4
@@ -1224,6 +1246,10 @@ plotly==5.3.1
     # via -r ./requirements.in
 pluggy==1.0.0
     # via pytest
+plumbum==1.8.1
+    # via pandoc
+ply==3.11
+    # via pandoc
 pointpats==2.3.0
     # via pysal
 pox==0.3.2
@@ -1604,6 +1630,8 @@ shapely==2.0.1
     #   osmnet
     #   osmnx
     #   rasterstats
+shutilwhich==1.1.0
+    # via latex
 sidecar==0.5.1
     # via -r ./requirements.in
 simpervisor==0.4
@@ -1614,6 +1642,7 @@ six==1.16.0
     # via
     #   astunparse
     #   bleach
+    #   data
     #   ecdsa
     #   fiona
     #   google-auth
@@ -1684,6 +1713,8 @@ tables==3.6.1
     # via pandana
 tblib==1.7.0
     # via distributed
+tempdir==0.7.1
+    # via latex
 tenacity==8.2.2
     # via
     #   plotly
@@ -1707,8 +1738,6 @@ terminado==0.17.1
     #   jupyter-server
     #   nbclassic
     #   notebook
-testpath==0.6.0
-    # via nbconvert
 text-unidecode==1.3
     # via python-slugify
 tflite-runtime-nightly==2.13.0.dev20230325
@@ -1723,6 +1752,8 @@ tifffile==2023.3.21
     #   scikit-image
 timezonefinderl==4.0.2
     # via datacube-ows
+tinycss2==1.2.1
+    # via nbconvert
 tobler==0.9.0
     # via pysal
 toml==0.10.2
@@ -1797,6 +1828,7 @@ traitlets==5.9.0
     #   jupyterhub
     #   matplotlib-inline
     #   nbclassic
+    #   nbclient
     #   nbconvert
     #   nbformat
     #   notebook
@@ -1830,7 +1862,9 @@ voluptuous==0.13.1
 wcwidth==0.2.6
     # via prompt-toolkit
 webencodings==0.5.1
-    # via bleach
+    # via
+    #   bleach
+    #   tinycss2
 websocket-client==1.5.1
     # via jupyter-server
 werkzeug==2.2.3
