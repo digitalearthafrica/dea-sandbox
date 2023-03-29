@@ -61,6 +61,10 @@ RUN apt update \
     # install ffmpeg the normal way
     ffmpeg \
     nodejs \
+    # install texlive
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-plain-generic\
   && apt clean autoclean \
   && apt autoremove \
   && rm -rf /var/lib/{apt,dpkg,cache}/
@@ -78,6 +82,11 @@ RUN python3 setup.py bdist_wheel
 RUN cd dist/ && python -m pip install tables-3.6.1-cp310-cp310-linux_x86_64.whl
 WORKDIR "/../.."
 RUN rm -rf PyTables-3.6.1 pytables.zip
+
+# install pandoc 3.1.2
+RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb
+RUN dpkg -i pandoc-3.1.2-1-amd64.deb
+RUN rm pandoc-3.1.2-1-amd64.deb
 
 RUN pip install -r /requirements0.txt && pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
