@@ -1,15 +1,15 @@
 # rio-cogeo
 access
 affine
-aiobotocore[boto3,awscli]
+aiobotocore[boto3,awscli]==2.4.2
 alabaster
 astropy
 autopep8
 black
-bokeh
+bokeh==2.4.3
 boltons
 bottleneck
-cartopy==0.19.0.post1 --no-binary cartopy
+cartopy --no-binary cartopy
 cattrs
 ciso8601
 cligj
@@ -17,32 +17,32 @@ cmocean
 cognitojwt==1.4.1 # Used for user authentication
 colorama
 contextily
-dask-gateway-server==0.9.0
+dask-gateway-server==2023.1.1
 hdstats==0.2.1
-dask-gateway==0.9.0
+dask-gateway==2023.1.1
 dask-image
 kombu==4.6.11
-dask-labextension==5.1.0
+dask-labextension==6.1.0
 dask-ml
-dask[complete]==2.30.0 # due to dask-gateway
+dask[complete]==2023.3.1 # due to dask-gateway
 dataclasses
 datacube-stats==1.0.2
-datacube[performance,s3]==1.8.8
+datacube[performance,s3]
 datashader==0.13.0
-deafrica-tools==0.1.5
+deafrica-tools
 descartes
 dill
-distributed==2.30.0 # due to dask-gateway
+distributed==2023.3.1 # due to dask-gateway
 docutils
 eodatasets3
 fc==1.3.5
 ffmpeg-python
 folium==0.12.1
-gdal==3.4.3
+gdal==3.6.3
 geohash2
 geojson
 geopy
-geoviews==1.9.1
+geoviews==1.9.6
 graphviz==0.17
 h5py
 hdmedians --no-binary=hdmedians
@@ -54,7 +54,7 @@ ipyfilechooser==0.4.4
 ipyleaflet==0.14.0
 ipympl==0.8.0
 ipython==7.31.1
-ipywidgets==7.6.3
+ipywidgets==7.7.5
 isort==5.9.3
 jedi==0.18.0
 jsonschema
@@ -65,7 +65,7 @@ jupyter-nbextensions-configurator==0.4.1
 jupyter-resource-usage==0.6.0
 jupyter-server-proxy==3.2.1
 jupyter-server==1.10.2
-jupyter-ui-poll==0.2.0
+jupyter-ui-poll==0.2.2
 jupyter==1.0.0
 jupyterhub==1.5.0
 jupyterlab-code-formatter==1.4.10
@@ -77,14 +77,15 @@ jupyterlab-language-pack-fr-FR==3.1.post0
 jupyterlab-logout==0.5.0
 jupyterlab-system-monitor==0.8.0
 jupyterlab-topbar==0.6.1
-jupyterlab-widgets==1.0.0
+jupyterlab-widgets==1.1.4
 jupyterlab==3.1.12
 jupytext==1.11.4
 lark-parser
+latex
 line-profiler==3.3.0
 mapclassify
 mypy
-nbconvert==5.6.1 # because of jupyter_contrib_nbextensions
+nbconvert # because of jupyter_contrib_nbextensions
 nbdime==3.1.1
 nbformat==5.1.3
 nbgitpuller==1.0.2
@@ -99,14 +100,16 @@ odc-dscache
 odc-io
 odc-stac
 odc-stats[ows]
-odc-ui
+odc-ui==0.2.1.dev3530 --extra-index-url="https://packages.dea.ga.gov.au"
 opencv-contrib-python-headless
 opencv-python-headless
+osmnx
 otps==0.3.2
 OWSLib
 pandana
 pandas
-panel==0.12.1
+pandoc
+panel==0.14.4
 param
 parso==0.8.2
 pathos
@@ -121,6 +124,7 @@ pyproj
 pyrsistent
 pysal
 pysheds
+pystac-client
 python-dateutil
 python-geohash
 pyTMD==1.0.6
@@ -139,7 +143,7 @@ sidecar==0.5.1
 sqlalchemy
 structlog
 tensorflow
-tflite_runtime
+tflite-runtime-nightly
 thredds-crawler
 toolz
 tqdm
