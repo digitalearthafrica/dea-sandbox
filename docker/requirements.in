@@ -140,6 +140,7 @@ scipy
 seaborn
 setuptools-scm[toml]
 sidecar==0.5.1
+spyndex
 sqlalchemy
 structlog
 tensorflow
