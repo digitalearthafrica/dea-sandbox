@@ -27,7 +27,7 @@ dask-ml
 dask[complete]==2023.3.1 # due to dask-gateway
 dataclasses
 datacube-stats==1.0.2
-datacube[performance,s3]
+datacube[performance,s3]==1.8.13
 datashader==0.13.0
 deafrica-tools
 descartes

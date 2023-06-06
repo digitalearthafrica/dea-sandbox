@@ -51,11 +51,11 @@ aiosignal==1.3.1
     # via aiohttp
 alabaster==0.7.13
     # via -r ./requirements.in
-alembic==1.10.4
+alembic==1.11.1
     # via jupyterhub
 amqp==2.6.1
     # via kombu
-anyio==3.6.2
+anyio==3.7.0
     # via jupyter-server
 argon2-cffi==21.3.0
     # via
@@ -66,7 +66,7 @@ argon2-cffi-bindings==21.2.0
     # via argon2-cffi
 asciitree==0.3.3
     # via zarr
-astropy==5.2.2
+astropy==5.3
     # via -r ./requirements.in
 asttokens==2.2.1
     # via stack-data
@@ -152,7 +152,7 @@ branca==0.6.0
     #   deafrica-tools
     #   folium
     #   ipyleaflet
-cachetools==5.3.0
+cachetools==5.3.1
     # via
     #   datacube
     #   google-auth
@@ -161,7 +161,7 @@ cartopy==0.21.1
     # via
     #   -r ./requirements.in
     #   geoviews
-cattrs==22.2.0
+cattrs==23.1.2
     # via
     #   -r ./requirements.in
     #   digitalearthau
@@ -253,16 +253,16 @@ contextily==1.3.0
     # via -r ./requirements.in
 contourpy==1.0.7
     # via matplotlib
-coverage==7.2.5
+coverage==7.2.7
     # via nbval
-cryptography==40.0.2
+cryptography==41.0.1
     # via
     #   dask-gateway-server
     #   pyopenssl
     #   python-jose
 cycler==0.11.0
     # via matplotlib
-cython==0.29.34
+cython==0.29.35
     # via
     #   hdmedians
     #   pandana
@@ -299,7 +299,7 @@ data==0.4
     # via latex
 dataclasses==0.6
     # via -r ./requirements.in
-datacube[celery,performance,s3]==1.8.12
+datacube[celery,performance,s3]==1.8.13
     # via
     #   -r ./requirements.in
     #   datacube-ows
@@ -362,7 +362,7 @@ docutils==0.16
     #   -r ./requirements.in
     #   awscli
     #   geohash2
-earthengine-api==0.1.352
+earthengine-api==0.1.355
     # via
     #   ee-extra
     #   eemont
@@ -390,6 +390,7 @@ esda==2.4.3
     #   splot
 exceptiongroup==1.1.1
     # via
+    #   anyio
     #   cattrs
     #   pytest
 executing==1.2.0
@@ -400,7 +401,7 @@ fc==1.3.5
     # via -r ./requirements.in
 ffmpeg-python==0.2.0
     # via -r ./requirements.in
-fiona==1.8.22
+fiona==1.9.4.post1
     # via
     #   datacube-stats
     #   deafrica-tools
@@ -417,13 +418,13 @@ flask-babel==2.0.0
     # via datacube-ows
 flask-log-request-id==0.10.1
     # via datacube-ows
-flatbuffers==23.3.3
+flatbuffers==23.5.26
     # via tensorflow
 folium==0.12.1
     # via
     #   -r ./requirements.in
     #   deafrica-tools
-fonttools==4.39.3
+fonttools==4.39.4
     # via matplotlib
 frozenlist==1.3.3
     # via
@@ -450,7 +451,7 @@ gdal==3.6.3
     #   deafrica-tools
     #   digitalearthau
     #   odc-stats
-geoalchemy2==0.13.2
+geoalchemy2==0.13.3
     # via
     #   datacube
     #   datacube-ows
@@ -462,7 +463,7 @@ geojson==3.0.1
     # via
     #   -r ./requirements.in
     #   pysheds
-geopandas==0.13.0
+geopandas==0.13.2
     # via
     #   access
     #   deafrica-tools
@@ -495,9 +496,9 @@ google-api-core==2.11.0
     #   google-api-python-client
     #   google-cloud-core
     #   google-cloud-storage
-google-api-python-client==2.86.0
+google-api-python-client==2.88.0
     # via earthengine-api
-google-auth==2.17.3
+google-auth==2.19.1
     # via
     #   earthengine-api
     #   google-api-core
@@ -529,7 +530,7 @@ graphviz==0.17
     # via -r ./requirements.in
 greenlet==2.0.2
     # via sqlalchemy
-grpcio==1.54.0
+grpcio==1.54.2
     # via
     #   tensorboard
     #   tensorflow
@@ -559,7 +560,7 @@ idna==3.4
     #   anyio
     #   requests
     #   yarl
-imageio==2.28.1
+imageio==2.31.0
     # via
     #   pims
     #   scikit-image
@@ -575,7 +576,7 @@ ipyevents==2.0.1
     # via -r ./requirements.in
 ipyfilechooser==0.4.4
     # via -r ./requirements.in
-ipykernel==6.23.0
+ipykernel==6.23.1
     # via
     #   ipympl
     #   ipywidgets
@@ -628,7 +629,7 @@ isort==5.9.3
     # via -r ./requirements.in
 itsdangerous==2.1.2
     # via flask
-jax==0.4.8
+jax==0.4.11
     # via tensorflow
 jedi==0.18.0
     # via
@@ -663,7 +664,7 @@ joblib==1.2.0
     #   scikit-learn
     #   segregation
     #   tobler
-json5==0.9.11
+json5==0.9.14
     # via jupyterlab-server
 jsonschema==4.17.3
     # via
@@ -868,7 +869,7 @@ markdown-it-py==1.1.0
     # via
     #   jupytext
     #   mdit-py-plugins
-markupsafe==2.1.2
+markupsafe==2.1.3
     # via
     #   jinja2
     #   mako
@@ -895,7 +896,7 @@ matplotlib-inline==0.1.6
     # via
     #   ipykernel
     #   ipython
-mdit-py-plugins==0.3.5
+mdit-py-plugins==0.4.0
     # via jupytext
 mercantile==1.2.1
     # via contextily
@@ -922,9 +923,7 @@ multipledispatch==0.6.0
     #   datashape
 multiprocess==0.70.14
     # via pathos
-munch==2.5.0
-    # via fiona
-mypy==1.2.0
+mypy==1.3.0
     # via -r ./requirements.in
 mypy-extensions==1.0.0
     # via
@@ -934,7 +933,7 @@ nbclassic==0.5.6
     # via
     #   jupyterlab
     #   notebook
-nbclient==0.7.4
+nbclient==0.8.0
     # via nbconvert
 nbconvert==7.4.0
     # via
@@ -1070,7 +1069,6 @@ numpy==1.23.5
     #   pointpats
     #   pyarrow
     #   pyerfa
-    #   pygeos
     #   pysheds
     #   pytmd
     #   pywavelets
@@ -1123,13 +1121,13 @@ odc-dscache==0.2.2
     # via
     #   -r ./requirements.in
     #   odc-stats
-odc-geo==0.3.3
+odc-geo==0.4.0
     # via odc-stac
 odc-io==0.2.1
     # via
     #   -r ./requirements.in
     #   odc-stats
-odc-stac==0.3.5
+odc-stac==0.3.6
     # via
     #   -r ./requirements.in
     #   odc-stats
@@ -1151,11 +1149,11 @@ ordered-set==4.1.0
     # via deepdiff
 osmnet==0.1.6
     # via urbanaccess
-osmnx==1.3.0
+osmnx==1.3.1.post0
     # via -r ./requirements.in
 otps==0.3.2
     # via -r ./requirements.in
-owslib==0.29.1
+owslib==0.29.2
     # via
     #   -r ./requirements.in
     #   deafrica-tools
@@ -1190,13 +1188,13 @@ packaging==23.1
     #   statsmodels
     #   tensorflow
     #   xarray
-pamela==1.0.0
+pamela==1.1.0
     # via jupyterhub
 pandana==0.6.1
     # via
     #   -r ./requirements.in
     #   urbanaccess
-pandas==2.0.1
+pandas==2.0.2
     # via
     #   -r ./requirements.in
     #   access
@@ -1283,7 +1281,7 @@ pillow==9.5.0
     #   scikit-image
 pims==0.6.1
     # via dask-image
-platformdirs==3.5.0
+platformdirs==3.5.1
     # via
     #   black
     #   jupyter-core
@@ -1292,7 +1290,7 @@ plotly==5.3.1
     # via -r ./requirements.in
 pluggy==1.0.0
     # via pytest
-plumbum==1.8.1
+plumbum==1.8.2
     # via pandoc
 ply==3.11
     # via pandoc
@@ -1302,7 +1300,7 @@ pox==0.3.2
     # via pathos
 ppft==1.7.6.6
     # via pathos
-prometheus-client==0.16.0
+prometheus-client==0.17.0
     # via
     #   jupyter-resource-usage
     #   jupyter-server
@@ -1317,7 +1315,7 @@ prompt-toolkit==3.0.38
     #   -r ./requirements.in
     #   ipython
     #   jupyter-console
-protobuf==4.22.4
+protobuf==4.23.2
     # via
     #   -r ./requirements.in
     #   google-api-core
@@ -1362,7 +1360,7 @@ pyct==0.5.0
     #   colorcet
     #   datashader
     #   panel
-pydash==7.0.3
+pydash==7.0.4
     # via
     #   -r ./requirements.in
     #   datacube-stats
@@ -1371,8 +1369,6 @@ pydotplus==2.0.2
     # via -r ./requirements.in
 pyerfa==2.0.0.3
     # via astropy
-pygeos==0.14
-    # via tobler
 pygments==2.15.1
     # via
     #   ipython
@@ -1380,7 +1376,7 @@ pygments==2.15.1
     #   nbconvert
     #   nbdime
     #   qtconsole
-pyopenssl==23.1.1
+pyopenssl==23.2.0
     # via certipy
 pyows==0.2.7
     # via datacube-ows
@@ -1411,7 +1407,7 @@ pyrsistent==0.19.3
     #   jsonschema
 pysal==23.1
     # via -r ./requirements.in
-pysheds==0.3.3
+pysheds==0.3.5
     # via -r ./requirements.in
 pyshp==2.3.1
     # via cartopy
@@ -1441,7 +1437,6 @@ python-dateutil==2.8.2
     #   jupyter-client
     #   jupyterhub
     #   matplotlib
-    #   osmnx
     #   owslib
     #   pandas
     #   pystac
@@ -1492,7 +1487,7 @@ pyyaml==5.4.1
     #   owslib
     #   pytmd
     #   urbanaccess
-pyzmq==25.0.2
+pyzmq==25.1.0
     # via
     #   ipykernel
     #   jupyter-client
@@ -1505,9 +1500,9 @@ qtconsole==5.4.3
     # via jupyter
 qtpy==2.3.1
     # via qtconsole
-quantecon==0.7.0
+quantecon==0.7.1
     # via giddy
-rasterio==1.3.6
+rasterio==1.3.7
     # via
     #   contextily
     #   datacube
@@ -1523,13 +1518,13 @@ rasterio==1.3.6
     #   rasterstats
     #   rioxarray
     #   tobler
-rasterstats==0.18.0
+rasterstats==0.19.0
     # via
     #   deafrica-tools
     #   tobler
-regex==2023.5.5
+regex==2023.6.3
     # via datacube-ows
-requests==2.30.0
+requests==2.31.0
     # via
     #   access
     #   contextily
@@ -1574,7 +1569,7 @@ rtree==1.0.1
     # via
     #   -r ./requirements.in
     #   spaghetti
-ruamel-yaml==0.17.24
+ruamel-yaml==0.17.31
     # via
     #   datacube
     #   eodatasets3
@@ -1589,7 +1584,7 @@ s3transfer==0.6.1
     # via
     #   awscli
     #   boto3
-scikit-image==0.20.0
+scikit-image==0.21.0
     # via
     #   -r ./requirements.in
     #   deafrica-tools
@@ -1658,7 +1653,7 @@ send2trash==1.8.2
     #   jupyter-server
     #   nbclassic
     #   notebook
-sentry-sdk==1.22.2
+sentry-sdk==1.25.0
     # via odc-stats
 setuptools-scm[toml]==7.1.0
     # via
@@ -1682,7 +1677,7 @@ shutilwhich==1.1.0
     # via latex
 sidecar==0.5.1
     # via -r ./requirements.in
-simpervisor==0.4
+simpervisor==1.0.0
     # via jupyter-server-proxy
 simplejson==3.19.1
     # via rasterstats
@@ -1698,7 +1693,6 @@ six==1.16.0
     #   google-auth-httplib2
     #   google-pasta
     #   multipledispatch
-    #   munch
     #   nbval
     #   patsy
     #   plotly
@@ -1717,7 +1711,7 @@ sortedcontainers==2.4.0
     # via distributed
 soupsieve==2.4.1
     # via beautifulsoup4
-spaghetti==1.7.2
+spaghetti==1.7.3
     # via
     #   pysal
     #   spopt
@@ -1760,7 +1754,7 @@ structlog==23.1.0
     #   -r ./requirements.in
     #   digitalearthau
     #   eodatasets3
-sympy==1.11.1
+sympy==1.12
     # via quantecon
 tables==3.6.1
     # via pandana
@@ -1789,7 +1783,7 @@ terminado==0.17.1
     #   notebook
 text-unidecode==1.3
     # via python-slugify
-tflite-runtime-nightly==2.14.0.dev20230507
+tflite-runtime-nightly==2.14.0.dev20230604
     # via -r ./requirements.in
 threadpoolctl==3.1.0
     # via scikit-learn
@@ -1803,7 +1797,7 @@ timezonefinderl==4.0.2
     # via datacube-ows
 tinycss2==1.2.1
     # via nbconvert
-tobler==0.9.0
+tobler==0.10
     # via pysal
 toml==0.10.2
     # via jupytext
@@ -1825,7 +1819,7 @@ toolz==0.12.0
     #   odc-stac
     #   odc-stats
     #   partd
-tornado==6.3.1
+tornado==6.3.2
     # via
     #   bokeh
     #   dask-gateway
@@ -1884,10 +1878,11 @@ traitlets==5.9.0
     #   traittypes
 traittypes==0.2.1
     # via ipyleaflet
-typing-extensions==4.5.0
+typing-extensions==4.6.3
     # via
     #   alembic
     #   bokeh
+    #   cattrs
     #   mypy
     #   panel
     #   pydash
@@ -1899,11 +1894,12 @@ urbanaccess==0.2.2
     # via -r ./requirements.in
 uritemplate==4.1.1
     # via google-api-python-client
-urllib3==1.26.15
+urllib3==1.26.16
     # via
     #   -r ./requirements.in
     #   botocore
     #   distributed
+    #   google-auth
     #   requests
     #   sentry-sdk
 vine==1.3.0
@@ -1918,9 +1914,9 @@ webencodings==0.5.1
     # via
     #   bleach
     #   tinycss2
-websocket-client==1.5.1
+websocket-client==1.5.2
     # via jupyter-server
-werkzeug==2.3.3
+werkzeug==2.3.4
     # via
     #   flask
     #   tensorboard
@@ -1934,7 +1930,7 @@ wrapt==1.14.1
     # via
     #   aiobotocore
     #   tensorflow
-xarray==2023.4.2
+xarray==2023.5.0
     # via
     #   -r ./requirements.in
     #   datacube
@@ -1954,7 +1950,7 @@ xgboost==1.7.5
     # via
     #   -r ./requirements.in
     #   s2cloudmask
-xyzservices==2023.2.0
+xyzservices==2023.5.0
     # via
     #   contextily
     #   ipyleaflet
