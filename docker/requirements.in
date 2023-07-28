@@ -27,7 +27,7 @@ dask-ml
 dask[complete]==2023.3.1 # due to dask-gateway
 dataclasses
 datacube-stats==1.0.2
-datacube[performance,s3]==1.8.13
+datacube[performance,s3]==1.8.15
 datashader==0.13.0
 deafrica-tools
 descartes
@@ -67,7 +67,7 @@ jupyter-server-proxy==3.2.1
 jupyter-server==1.10.2
 jupyter-ui-poll==0.2.2
 jupyter==1.0.0
-jupyterhub==1.5.0
+jupyterhub==3.0.0
 jupyterlab-code-formatter==1.4.10
 jupyterlab-code-snippets==2.1.0
 jupyterlab-geojson==3.1.2
@@ -82,13 +82,14 @@ jupyterlab==3.1.12
 jupytext==1.11.4
 lark-parser
 latex
-line-profiler==3.3.0
+line-profiler==4.0.3
 mapclassify
 mypy
 nbconvert # because of jupyter_contrib_nbextensions
 nbdime==3.1.1
 nbformat==5.1.3
 nbgitpuller==1.0.2
+nbmake
 nbval==0.9.6
 netcdf4==1.5.8
 numba
@@ -115,6 +116,7 @@ parso==0.8.2
 pathos
 Pillow
 plotly==5.3.1
+poetry
 prompt-toolkit==3.0.38 # because of line_profiler/ipython
 protobuf
 psycopg2
@@ -125,11 +127,14 @@ pyrsistent
 pysal
 pysheds
 pystac-client
+pytest
+pytest-reportlog
+pytest-xdist
 python-dateutil
 python-geohash
 pyTMD==1.0.6
 pyviz_comms==2.0.1
-pyyaml
+pyyaml==5.3.1
 rioxarray
 Rtree
 s2cloudmask
