@@ -72,17 +72,6 @@ RUN apt update \
 COPY requirements0.txt /
 COPY requirements.txt /
 
-# install pytables 3.6.1
-ENV HDF5_DIR=/usr/lib/x86_64-linux-gnu/hdf5/serial/
-RUN pip install Cython && pip install numpy
-RUN wget -O pytables.zip https://github.com/PyTables/PyTables/archive/refs/tags/v3.6.1.zip
-RUN unzip pytables.zip
-WORKDIR "/PyTables-3.6.1"
-RUN python3 setup.py bdist_wheel
-RUN cd dist/ && python -m pip install tables-3.6.1-cp310-cp310-linux_x86_64.whl
-WORKDIR "/../.."
-RUN rm -rf PyTables-3.6.1 pytables.zip
-
 # install pandoc 3.1.2
 RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb
 RUN dpkg -i pandoc-3.1.2-1-amd64.deb
