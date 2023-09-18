@@ -1180,7 +1180,7 @@ odc-stac==0.3.6
     # via
     #   -r ./requirements.in
     #   odc-stats
-odc-stats[ows]==1.0.35
+odc-stats[ows]==1.0.34
     # via -r ./requirements.in
 odc-ui==0.2.1.dev3673
     # via
