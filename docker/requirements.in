@@ -100,7 +100,7 @@ odc-cloud[ASYNC]
 odc-dscache
 odc-io
 odc-stac
-odc-stats[ows]==1.0.34
+odc-stats[ows]
 odc-ui==0.2.1.dev3673 --extra-index-url="https://packages.dea.ga.gov.au"
 opencv-contrib-python-headless
 opencv-python-headless
