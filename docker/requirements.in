@@ -1,127 +1,134 @@
 # rio-cogeo
 access
 affine
-aiobotocore[boto3,awscli]==2.4.2
+aiobotocore[boto3,awscli]
 alabaster
 astropy
 autopep8
-black
-bokeh==2.4.3
+black[jupyter]
+bokeh
 boltons
 bottleneck
-cartopy --no-binary cartopy
+cartopy
 cattrs
 ciso8601
+click
 cligj
+climate_indices
 cmocean
-cognitojwt==1.4.1 # Used for user authentication
+cognitojwt # Used for user authentication
 colorama
 contextily
-dask-gateway-server==2023.1.1
-hdstats==0.2.1
-dask-gateway==2023.1.1
+dask-gateway-server
+hdstats
+dask-gateway
 dask-image
-kombu==4.6.11
-dask-labextension==6.1.0
+kombu
+dask-labextension
 dask-ml
-dask[complete]==2023.3.1 # due to dask-gateway
-dataclasses
-datacube-stats==1.0.2
-datacube[performance,s3]==1.8.15
-datashader==0.13.0
-deafrica-tools
+dask[complete] # due to dask-gateway
+# datacube-stats==1.0.2 # Replaced by odc-stats
+# dataclasses #  backport for Python 3.6
+datacube
+datacube-ows
+datashader
+deafrica-tools==2.4.4
 descartes
 dill
-distributed==2023.3.1 # due to dask-gateway
+distributed # due to dask-gateway
 docutils
 eodatasets3
-fc==1.3.5
-ffmpeg-python
-folium==0.12.1
-gdal==3.6.3
+folium
+gdal==3.8.5 # should match version in the osgeo/gdal image
 geohash2
 geojson
 geopy
-geoviews==1.9.6
-graphviz==0.17
+geoviews
+graphviz
 h5py
 hdmedians --no-binary=hdmedians
-holoviews==1.14.5
+holoviews
 https://github.com/ubarsc/rios/archive/rios-1.4.10.tar.gz
-ipycanvas==0.9.0
-ipyevents==2.0.1
-ipyfilechooser==0.4.4
-ipyleaflet==0.17.2
-ipympl==0.8.0
-ipython==8.13.1
-ipywidgets==8.0.6
-isort==5.9.3
-jedi==0.18.0
+ipycanvas
+ipyevents
+ipyfilechooser
+ipyleaflet
+ipympl
+ipython
+ipywidgets
+isort
+jedi
 jsonschema
-jupyter-bokeh==3.0.2
-jupyter-contrib-core==0.3.3
-jupyter-contrib-nbextensions==0.5.1
-jupyter-nbextensions-configurator==0.4.1
-jupyter-resource-usage==0.6.0
-jupyter-server-proxy==3.2.1
-jupyter-server==1.10.2
-jupyter-ui-poll==0.2.2
-jupyter==1.0.0
-jupyterhub==3.0.0
-jupyterlab-code-formatter==1.4.10
-jupyterlab-code-snippets==2.1.0
-jupyterlab-geojson==3.1.2
-jupyterlab-git==0.32.2
-jupyterlab-iframe==0.4.0
-jupyterlab-language-pack-fr-FR==3.1.post0
-jupyterlab-logout==0.5.0
-jupyterlab-system-monitor==0.8.0
-jupyterlab-topbar==0.6.1
-jupyterlab-widgets==3.0.7
-jupyterlab==3.1.12
-jupytext==1.11.4
+jupyter-bokeh
+jupyter-contrib-core
+jupyter-contrib-nbextensions
+jupyter-nbextensions-configurator
+jupyter-resource-usage
+jupyter-server-proxy
+jupyter-server
+jupyter-ui-poll
+jupyter
+jupyterhub
+jupyterlab-code-formatter
+jupyterlab-code-snippets
+jupyterlab-geojson
+jupyterlab-git
+jupyterlab-iframe
+jupyterlab-language-pack-fr-FR
+jupyterlab-logout
+jupyterlab-system-monitor
+jupyterlab-topbar
+jupyterlab-widgets
+jupyterlab
+jupytext
 lark-parser
 latex
-line-profiler==4.0.3
+line-profiler
 mapclassify
+memory-profiler
 mypy
 nbconvert # because of jupyter_contrib_nbextensions
-nbdime==3.1.1
-nbformat==5.1.3
-nbgitpuller==1.0.2
+nbdime
+nbformat
+nbgitpuller
 nbmake
-nbval==0.9.6
-netcdf4==1.5.8
+nbval
+netcdf4
 numba
 numexpr
-numexpr3
+numpy
 odc-algo
 odc-cloud[ASYNC]
 odc-dscache
+odc-geo
 odc-io
 odc-stac
-odc-stats[ows]
-odc-ui==0.2.1.dev3673 --extra-index-url="https://packages.dea.ga.gov.au"
+odc-stats
+# odc-tools apps
+odc-apps-cloud
+odc-apps-dc-tools
+# odc-tools libs
+odc-ui
 opencv-contrib-python-headless
 opencv-python-headless
 osmnx
-otps==0.3.2
+# otps
 OWSLib
 pandana
-pandas
+pandas==2.1.4
 pandoc
-panel==0.14.4
+panel
 param
-parso==0.8.2
+parso
 pathos
 Pillow
-plotly==5.3.1
+plotly
 poetry
-prompt-toolkit==3.0.38 # because of line_profiler/ipython
+prompt-toolkit # because of line_profiler/ipython
 protobuf
 psycopg2
 pydash
-pydotplus==2.0.2
+py3dotplus # replace pydotplus
 pyproj
 pyrsistent
 pysal
@@ -132,37 +139,37 @@ pytest-reportlog
 pytest-xdist
 python-dateutil
 python-geohash
-pyTMD==1.0.6
-pyviz_comms==2.0.1
-pyyaml==5.3.1
+pyTMD
+pyviz_comms
+pyyaml
 rioxarray
 Rtree
-s2cloudmask
+git+https://github.com/daleroberts/s2cloudmask
 s3fs
 scikit-image
 scikit-learn
 scipy
 seaborn
 setuptools-scm[toml]
-sidecar==0.5.1
+# setuptools < 60.0 # For numpy.distutils
+setuptools==73.0.0
+sidecar
 spyndex
 sqlalchemy
 structlog
 tensorflow
 tflite-runtime-nightly
-thredds-crawler
+thredds-crawler # archived
 toolz
 tqdm
 urbanaccess
 urllib3
 voluptuous
+wapordl
 xarray
 xgboost # used by Dale's s2cloudmask
-yapf==0.31.0
+yapf
 zarr
 
-
 --no-binary rasterio
---no-binary shapely
---no-binary fiona
 --no-binary hdstats

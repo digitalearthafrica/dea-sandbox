@@ -1,4 +1,4 @@
-FROM osgeo/gdal:ubuntu-full-3.6.3
+FROM ghcr.io/osgeo/gdal:ubuntu-small-3.8.5
 
 ENV SHELL=bash
 
@@ -7,12 +7,11 @@ ENV DEBIAN_FRONTEND=non-interactive
 RUN apt update \
   && apt install -y curl \
   && apt remove -y python3-numpy \
-  && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
+  && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt update \
   && apt install -y --fix-missing --no-install-recommends \
     python3-pip python3-dev \
-  && python -m pip install --upgrade pip \
-  && apt update \
+    && apt update \
   && apt install -y --fix-missing --no-install-recommends \
     # developer convenience
     postgresql-client \
@@ -57,27 +56,31 @@ RUN apt update \
     libfftw3-dev \
     liblapack-dev \
     # install libhdf5
-    libhdf5-serial-dev\
+    libhdf5-serial-dev \
     # install ffmpeg the normal way
     ffmpeg \
     nodejs \
     # install texlive
     texlive-xetex \
     texlive-fonts-recommended \
-    texlive-plain-generic\
+    texlive-plain-generic \
   && apt clean autoclean \
   && apt autoremove \
   && rm -rf /var/lib/{apt,dpkg,cache}/
 
-COPY requirements0.txt /
 COPY requirements.txt /
 
-# install pandoc 3.1.2
-RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb
-RUN dpkg -i pandoc-3.1.2-1-amd64.deb
-RUN rm pandoc-3.1.2-1-amd64.deb
+# Install yq
+RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
+    chmod +x /usr/bin/yq
 
-RUN pip install -r /requirements0.txt && pip install -r /requirements.txt && rm -rf /root/.cache/pip
+# install pandoc 3.1.2
+RUN wget https://github.com/jgm/pandoc/releases/download/3.4/pandoc-3.4-1-amd64.deb \
+  && apt --fix-broken install \
+  && dpkg -i pandoc-3.4-1-amd64.deb \
+  && rm pandoc-3.4-1-amd64.deb
+
+RUN pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
 RUN jupyter labextension install jupyterlab-theme-toggle
 RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
