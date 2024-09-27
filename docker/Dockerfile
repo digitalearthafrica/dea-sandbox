@@ -1,8 +1,9 @@
 FROM ghcr.io/osgeo/gdal:ubuntu-small-3.8.5
 
-ENV SHELL=bash
-
-ENV DEBIAN_FRONTEND=non-interactive
+ENV SHELL=bash \
+    DEBIAN_FRONTEND=non-interactive \
+    USE_PYGEOS=0 \
+    SPATIALITE_LIBRARY_PATH='mod_spatialite.so'
 
 RUN apt update \
   && apt install -y curl \
@@ -59,6 +60,8 @@ RUN apt update \
     libhdf5-serial-dev \
     # install ffmpeg the normal way
     ffmpeg \
+    # Spatialite support
+    libsqlite3-mod-spatialite \
     nodejs \
     # install texlive
     texlive-xetex \
@@ -82,11 +85,11 @@ RUN wget https://github.com/jgm/pandoc/releases/download/3.4/pandoc-3.4-1-amd64.
 
 RUN pip install -r /requirements.txt && rm -rf /root/.cache/pip
 
-RUN jupyter labextension install jupyterlab-theme-toggle
 RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
 
 COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
 COPY assets/overrides.json /env/share/jupyter/lab/settings/
+COPY assets/jupyter_lab_config.py /etc/jupyter/
 
 ARG nb_user=jovyan
 ARG nb_uid=1000
