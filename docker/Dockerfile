@@ -88,7 +88,7 @@ RUN pip install -r /requirements.txt && rm -rf /root/.cache/pip
 RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
 
 COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
-COPY assets/overrides.json /env/share/jupyter/lab/settings/
+COPY assets/overrides.json /usr/local/share/jupyter/lab/settings/
 COPY assets/jupyter_lab_config.py /etc/jupyter/
 
 ARG nb_user=jovyan
