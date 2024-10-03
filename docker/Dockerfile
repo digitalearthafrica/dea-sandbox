@@ -11,7 +11,7 @@ RUN apt update \
   && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt update \
   && apt install -y --fix-missing --no-install-recommends \
-    python3-pip python3-dev \
+    python3-full python3-dev python3-venv python3-pip \
     && apt update \
   && apt install -y --fix-missing --no-install-recommends \
     # developer convenience
@@ -71,33 +71,45 @@ RUN apt update \
   && apt autoremove \
   && rm -rf /var/lib/{apt,dpkg,cache}/
 
-COPY requirements.txt /
+# Install tini
+RUN wget -O /bin/tini https://github.com/krallin/tini/releases/download/v0.19.0/tini && \
+  chmod +x /bin/tini
 
 # Install yq
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
-    chmod +x /usr/bin/yq
+  chmod +x /usr/bin/yq
 
-# install pandoc 3.1.2
+# install pandoc 3.4.1
 RUN wget https://github.com/jgm/pandoc/releases/download/3.4/pandoc-3.4-1-amd64.deb \
   && apt --fix-broken install \
   && dpkg -i pandoc-3.4-1-amd64.deb \
   && rm pandoc-3.4-1-amd64.deb
 
-RUN pip install -r /requirements.txt && rm -rf /root/.cache/pip
+COPY requirements.txt /
 
-RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
-
-COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
-COPY assets/overrides.json /usr/local/share/jupyter/lab/settings/
-COPY assets/jupyter_lab_config.py /etc/jupyter/
-
+# Create a non-root user
 ARG nb_user=jovyan
 ARG nb_uid=1000
 ARG nb_gid=100
 RUN useradd -m -s /bin/bash -N -g $nb_gid -u $nb_uid $nb_user
 
-RUN wget -O /bin/tini https://github.com/krallin/tini/releases/download/v0.19.0/tini && \
-  chmod +x /bin/tini
+# Set up the python virtual environment PEP 668.
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Change ownership of virtual environment folder from root to non-root user
+RUN chown -R $nb_uid:$nb_gid  $VIRTUAL_ENV
+
+USER $nb_user
+RUN python -m pip install --upgrade pip pip-tools
+RUN pip install --no-cache-dir -r requirements.txt
+RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
+
+USER root
+COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
+COPY assets/overrides.json $VIRTUAL_ENV/share/jupyter/lab/settings/
+COPY assets/jupyter_lab_config.py /etc/jupyter/
 
 WORKDIR "/home/$nb_user"
 
