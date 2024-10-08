@@ -38,8 +38,9 @@ dill
 distributed # due to dask-gateway
 docutils
 eodatasets3
+flox
 folium
-gdal==3.8.5 # should match version in the osgeo/gdal image
+GDAL[numpy]==3.8.5 # should match version in the osgeo/gdal image
 geohash2
 geojson
 geopy
