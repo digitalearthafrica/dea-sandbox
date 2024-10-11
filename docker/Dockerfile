@@ -6,14 +6,11 @@ ENV SHELL=bash \
     SPATIALITE_LIBRARY_PATH='mod_spatialite.so'
 
 RUN apt update \
-  && apt install -y curl \
   && apt remove -y python3-numpy \
+  && apt install -y curl \
   && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-  && apt update \
   && apt install -y --fix-missing --no-install-recommends \
     python3-full python3-dev python3-venv python3-pip \
-    && apt update \
-  && apt install -y --fix-missing --no-install-recommends \
     # developer convenience
     postgresql-client \
     postgresql \
