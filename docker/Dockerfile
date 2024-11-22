@@ -1,4 +1,4 @@
-FROM ghcr.io/osgeo/gdal:ubuntu-small-3.8.5
+FROM ghcr.io/osgeo/gdal:ubuntu-full-3.8.5
 
 ENV SHELL=bash \
     DEBIAN_FRONTEND=non-interactive \
