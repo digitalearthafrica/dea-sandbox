@@ -32,7 +32,7 @@ dask[complete] # due to dask-gateway
 datacube
 datacube-ows
 datashader
-deafrica-tools==2.4.4
+deafrica-tools>=2.4.4
 descartes
 dill
 distributed # due to dask-gateway
@@ -48,6 +48,7 @@ geoviews
 graphviz
 h5py
 hdmedians --no-binary=hdmedians
+hdstats --no-binary=hdstats
 holoviews
 https://github.com/ubarsc/rios/archive/rios-1.4.10.tar.gz
 ipycanvas
@@ -144,6 +145,7 @@ python-geohash
 pyTMD
 pyviz_comms
 pyyaml
+rasterio --no-binary=rasterio
 rioxarray
 Rtree
 git+https://github.com/daleroberts/s2cloudmask
@@ -153,8 +155,6 @@ scikit-learn
 scipy
 seaborn
 setuptools-scm[toml]
-# setuptools < 60.0 # For numpy.distutils
-setuptools==73.0.0
 sidecar
 spyndex
 sqlalchemy
@@ -173,5 +173,3 @@ xgboost # used by Dale's s2cloudmask
 yapf
 zarr
 
---no-binary rasterio
---no-binary hdstats
