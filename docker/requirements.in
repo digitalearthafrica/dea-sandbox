@@ -40,6 +40,7 @@ docutils
 eodatasets3
 flox
 folium
+gcsfs
 GDAL[numpy]==3.8.5 # should match version in the osgeo/gdal image
 geohash2
 geojson
@@ -87,6 +88,7 @@ jupytext
 lark-parser
 latex
 line-profiler
+localtileserver
 mapclassify
 memory-profiler
 mypy
@@ -162,6 +164,7 @@ structlog
 tensorflow
 tflite-runtime-nightly
 thredds-crawler # archived
+timescale
 toolz
 tqdm
 urbanaccess
