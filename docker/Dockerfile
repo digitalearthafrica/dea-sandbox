@@ -75,11 +75,13 @@ RUN useradd --no-log-init --create-home --shell /bin/bash --no-user-group --gid 
 COPY requirements.txt /
 
 USER $NB_USER
-RUN python -m pip install --upgrade pip pip-tools \
-    # Install required python packages
-    && pip install --no-cache-dir -r requirements.txt \
-    # Enable server extensions
-    && jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage
+RUN python -m pip install --upgrade pip pip-tools 
+# Install required python packages
+RUN pip install --no-cache-dir -r requirements.txt 
+# Enable server extensions
+RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_resource_usage 
+# Fix to ensure numpy-based raster support has been properly installed
+RUN pip install --no-cache --force-reinstall gdal=="$(gdal-config --version).*"
 
 USER root
 COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
