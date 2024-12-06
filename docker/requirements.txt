@@ -37,7 +37,7 @@ aiobotocore[awscli,boto3]==2.15.2
     #   s3fs
 aiohappyeyeballs==2.4.4
     # via aiohttp
-aiohttp==3.11.9
+aiohttp==3.11.10
     # via
     #   aiobotocore
     #   dask-gateway
@@ -60,7 +60,7 @@ aniso8601==9.0.1
     # via flask-restx
 annotated-types==0.7.0
     # via pydantic
-anyio==4.6.2.post1
+anyio==4.7.0
     # via
     #   httpx
     #   jupyter-server
@@ -283,7 +283,7 @@ contourpy==1.3.1
     # via
     #   bokeh
     #   matplotlib
-coverage==7.6.8
+coverage==7.6.9
     # via nbval
 crashtest==0.4.1
     # via
@@ -299,7 +299,7 @@ cycler==0.12.1
     # via matplotlib
 cython==3.0.11
     # via hdmedians
-dask[array,complete,dataframe,diagnostics,distributed]==2024.12.0
+dask[array,complete,dataframe,diagnostics,distributed]==2024.10.0
     # via
     #   -r requirements.in
     #   climate-indices
@@ -316,7 +316,7 @@ dask[array,complete,dataframe,diagnostics,distributed]==2024.12.0
     #   odc-stac
     #   odc-stats
     #   spyndex
-dask-expr==1.1.20
+dask-expr==1.1.16
     # via dask
 dask-gateway==2024.1.0
     # via
@@ -383,7 +383,7 @@ dill==0.3.9
     #   pathos
 distlib==0.3.9
     # via virtualenv
-distributed==2024.12.0
+distributed==2024.10.0
     # via
     #   -r requirements.in
     #   dask
@@ -473,7 +473,7 @@ folium==0.18.0
     # via
     #   -r requirements.in
     #   deafrica-tools
-fonttools==4.55.1
+fonttools==4.55.2
     # via matplotlib
 fqdn==1.5.1
     # via jsonschema
@@ -497,7 +497,9 @@ future==1.0.0
 gast==0.6.0
     # via tensorflow
 gcsfs==2024.10.0
-    # via deafrica-tools
+    # via
+    #   -r requirements.in
+    #   deafrica-tools
 gdal[numpy]==3.8.5
     # via
     #   -r requirements.in
@@ -576,7 +578,7 @@ google-auth-oauthlib==1.2.1
     # via gcsfs
 google-cloud-core==2.4.1
     # via google-cloud-storage
-google-cloud-storage==2.18.2
+google-cloud-storage==2.19.0
     # via
     #   earthengine-api
     #   gcsfs
@@ -630,7 +632,7 @@ httplib2==0.22.0
     #   earthengine-api
     #   google-api-python-client
     #   google-auth-httplib2
-httpx==0.28.0
+httpx==0.28.1
     # via
     #   jupyterlab
     #   rio-tiler
@@ -934,7 +936,9 @@ llvmlite==0.43.0
 lmdb==1.5.1
     # via odc-dscache
 localtileserver==0.10.5
-    # via deafrica-tools
+    # via
+    #   -r requirements.in
+    #   deafrica-tools
 locket==1.0.0
     # via
     #   distributed
@@ -1098,7 +1102,7 @@ networkx==3.4.2
     #   osmnx
     #   scikit-image
     #   spopt
-notebook==7.3.0
+notebook==7.3.1
     # via
     #   jupyter
     #   jupyter-contrib-core
@@ -1273,7 +1277,7 @@ odc-stac==0.3.10
     # via
     #   -r requirements.in
     #   odc-stats
-odc-stats==1.0.70
+odc-stats==1.0.71
     # via -r requirements.in
 odc-ui==0.2.1
     # via
@@ -1471,7 +1475,7 @@ plumbum==1.9.0
     # via pandoc
 ply==3.11
     # via pandoc
-poetry==1.8.4
+poetry==1.8.5
     # via
     #   -r requirements.in
     #   poetry-plugin-export
@@ -1508,7 +1512,7 @@ propcache==0.2.1
     #   yarl
 proto-plus==1.25.0
     # via google-api-core
-protobuf==5.29.0
+protobuf==5.29.1
     # via
     #   -r requirements.in
     #   google-api-core
@@ -2053,7 +2057,7 @@ text-unidecode==1.3
     # via python-slugify
 tflite-runtime==2.14.0
     # via odc-stats
-tflite-runtime-nightly==2.19.0.dev20241201
+tflite-runtime-nightly==2.19.0.dev20241205
     # via -r requirements.in
 threadpoolctl==3.5.0
     # via scikit-learn
@@ -2066,6 +2070,7 @@ tifffile==2024.9.20
     #   scikit-image
 timescale==0.0.5
     # via
+    #   -r requirements.in
     #   deafrica-tools
     #   pytmd
 timezonefinder==6.5.7
@@ -2169,7 +2174,7 @@ treelite==4.4.1
     # via tl2cgen
 trove-classifiers==2024.10.21.16
     # via poetry
-types-python-dateutil==2.9.0.20241003
+types-python-dateutil==2.9.0.20241206
     # via arrow
 typing-extensions==4.12.2
     # via

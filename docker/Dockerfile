@@ -75,7 +75,14 @@ RUN useradd --no-log-init --create-home --shell /bin/bash --no-user-group --gid 
 COPY requirements.txt /
 
 USER $NB_USER
-RUN python -m pip install --upgrade pip pip-tools 
+RUN python -m pip install --upgrade pip pip-tools
+## Temporary
+USER root
+RUN rm /requirements.txt
+COPY requirements.in /
+RUN pip-compile --verbose --output-file requirements.txt requirements.in --verbose --upgrade
+USER $NB_USER
+##
 # Install required python packages
 RUN pip install --no-cache-dir -r requirements.txt 
 # Enable server extensions
