@@ -66,23 +66,17 @@ ENV HOME="/home/${NB_USER}"
 ENV VIRTUAL_ENV="/opt/venv"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
-# Create a non-root user and 
+# Create a non-root user
 RUN useradd --no-log-init --create-home --shell /bin/bash --no-user-group --gid $NB_GID --uid $NB_UID  $NB_USER \
-    # Set up the python virtual environment PEP 668
-    && python3 -m venv $VIRTUAL_ENV \
-    && chown -R $NB_USER:$NB_GID  $VIRTUAL_ENV 
+    && chown -R $NB_UID:$NB_GID $HOME
+# Set up the python virtual environment PEP 668
+RUN python3 -m venv $VIRTUAL_ENV \
+    && chown -R $NB_UID:$NB_GID  $VIRTUAL_ENV
 
 COPY requirements.txt /
 
 USER $NB_USER
 RUN python -m pip install --upgrade pip pip-tools
-## Temporary
-USER root
-RUN rm /requirements.txt
-COPY requirements.in /
-RUN pip-compile --verbose --output-file requirements.txt requirements.in --verbose --upgrade
-USER $NB_USER
-##
 # Install required python packages
 RUN pip install --no-cache-dir -r requirements.txt 
 # Enable server extensions
@@ -91,8 +85,9 @@ RUN jupyter server extension enable --py --sys-prefix jupyterlab_iframe jupyter_
 RUN pip install --no-cache --force-reinstall gdal=="$(gdal-config --version).*"
 
 USER root
+ENV JUPYTERLAB_DIR=$VIRTUAL_ENV/share/jupyter/lab
 COPY assets/sync_repo assets/with_bootstrap assets/jupyterhub-singleuser /usr/bin/
-COPY assets/overrides.json $VIRTUAL_ENV/share/jupyter/lab/settings/
+COPY assets/overrides.json $JUPYTERLAB_DIR/settings/
 COPY assets/jupyter_lab_config.py /etc/jupyter/
 
 WORKDIR $HOME
@@ -108,4 +103,5 @@ ENTRYPOINT ["/bin/tini", "-s", "--", "with_bootstrap"]
 CMD ["jupyter", "lab", \
 "--ip=0.0.0.0", \
 "--port=9988", \
-"--no-browser"]
+"--no-browser", \
+"--debug"]
