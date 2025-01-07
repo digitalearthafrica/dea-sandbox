@@ -56,19 +56,13 @@ aiosignal==1.3.2
 alabaster==1.0.0
     # via -r requirements.in
 alembic==1.14.0
-    # via
-    #   datacube
-    #   jupyterhub
+    # via jupyterhub
 amqp==5.3.1
     # via kombu
 aniso8601==9.0.1
     # via flask-restx
 annotated-types==0.7.0
     # via pydantic
-antimeridian==0.4.0
-    # via
-    #   datacube
-    #   datacube-ows
 anyio==4.8.0
     # via
     #   httpx
@@ -328,7 +322,7 @@ cycler==0.12.1
     # via matplotlib
 cython==3.0.11
     # via hdmedians
-dask[array,complete,dataframe,diagnostics,distributed]==2024.12.1
+dask[array,complete,dataframe,diagnostics,distributed]==2024.10.0
     # via
     #   -r requirements.in
     #   climate-indices
@@ -345,7 +339,7 @@ dask[array,complete,dataframe,diagnostics,distributed]==2024.12.1
     #   odc-stac
     #   odc-stats
     #   spyndex
-dask-expr==1.1.21
+dask-expr==1.1.16
     # via dask
 dask-gateway==2024.1.0
     # via -r requirements.in
@@ -363,7 +357,7 @@ dask-ml==2024.4.4
     # via -r requirements.in
 data==0.4
     # via latex
-datacube[performance,s3]==1.9.0rc11
+datacube[performance,s3]==1.8.20
     # via
     #   -r requirements.in
     #   datacube-ows
@@ -373,7 +367,7 @@ datacube[performance,s3]==1.9.0rc11
     #   odc-dscache
     #   odc-stats
     #   odc-ui
-datacube-ows==1.9.0
+datacube-ows==1.8.43
     # via -r requirements.in
 datadog==0.50.2
     # via odc-apps-dc-tools
@@ -405,7 +399,7 @@ dill==0.3.9
     #   pathos
 distlib==0.3.9
     # via virtualenv
-distributed==2024.12.1
+distributed==2024.10.0
     # via
     #   -r requirements.in
     #   dask
@@ -440,7 +434,7 @@ ee-extra==0.0.15
     # via eemont
 eemont==0.3.6
     # via spyndex
-eodatasets3==1.9.0
+eodatasets3==0.30.7
     # via
     #   -r requirements.in
     #   odc-apps-dc-tools
@@ -665,8 +659,6 @@ imageio==2.36.1
     # via
     #   pims
     #   scikit-image
-importlib-metadata==8.5.0
-    # via datacube-ows
 importlib-resources==6.5.2
     # via
     #   flask-restx
@@ -1119,6 +1111,7 @@ nest-asyncio==1.6.0
 netcdf4==1.7.2
     # via
     #   -r requirements.in
+    #   datacube
     #   pytmd
 networkx==3.4.2
     # via
@@ -1160,7 +1153,6 @@ numpy==1.26.4
     # via
     #   -r requirements.in
     #   access
-    #   antimeridian
     #   astropy
     #   blosc2
     #   bokeh
@@ -1289,7 +1281,6 @@ odc-dscache==0.2.3
 odc-geo==0.4.8
     # via
     #   -r requirements.in
-    #   datacube
     #   odc-stac
 odc-io==0.2.2
     # via
@@ -1543,6 +1534,7 @@ psutil==5.9.8
 psycopg2==2.9.10
     # via
     #   -r requirements.in
+    #   datacube
     #   datacube-ows
     #   odc-dscache
 ptyprocess==0.7.0
@@ -1957,7 +1949,6 @@ setuptools-scm[toml]==8.1.0
     #   timescale
 shapely==2.0.6
     # via
-    #   antimeridian
     #   cartopy
     #   datacube
     #   eodatasets3
@@ -2040,7 +2031,7 @@ spvcm==0.3.0
     # via pysal
 spyndex==0.6.0
     # via -r requirements.in
-sqlalchemy==2.0.36
+sqlalchemy==1.4.54
     # via
     #   -r requirements.in
     #   alembic
@@ -2195,7 +2186,6 @@ typing-extensions==4.12.2
     #   pydantic-core
     #   pydash
     #   rio-tiler
-    #   sqlalchemy
     #   tables
     #   tensorflow
 tzdata==2024.2
@@ -2292,8 +2282,6 @@ zarr==2.18.4
     # via -r requirements.in
 zict==3.0.0
     # via distributed
-zipp==3.21.0
-    # via importlib-metadata
 zstandard==0.23.0
     # via odc-dscache
 
