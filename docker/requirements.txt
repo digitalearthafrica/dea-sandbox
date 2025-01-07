@@ -899,7 +899,7 @@ jupyterlab-widgets==3.0.13
     #   ipywidgets
 jupytext==1.16.6
     # via -r requirements.in
-keras==3.7.0
+keras==3.8.0
     # via tensorflow
 keyring==25.6.0
     # via poetry

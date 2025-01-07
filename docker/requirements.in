@@ -31,7 +31,7 @@ dask-ml
 dask[complete]  # due to dask-gateway
 # datacube-stats==1.0.2 # Replaced by odc-stats
 # dataclasses #  backport for Python 3.6
-datacube==1.8.20
+datacube[performance,s3]==1.8.20
 datacube-ows
 datashader
 # deafrica-tools>=2.4.4
