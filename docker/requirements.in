@@ -2,6 +2,7 @@
 access
 affine
 aiobotocore[boto3,awscli]
+aiohttp
 alabaster
 astropy
 autopep8
@@ -9,6 +10,7 @@ black[jupyter]
 bokeh
 boltons
 bottleneck
+branca
 cartopy
 cattrs
 ciso8601
@@ -26,15 +28,13 @@ dask-image
 kombu
 dask-labextension>=7.0.0
 dask-ml
-# dask v2024.12.0 and v2024.11.2 are
-# not compatible with datacube v1.8.19
-dask[complete]==2024.10.0 # due to dask-gateway
+dask[complete]  # due to dask-gateway
 # datacube-stats==1.0.2 # Replaced by odc-stats
 # dataclasses #  backport for Python 3.6
 datacube
 datacube-ows
 datashader
-deafrica-tools>=2.4.4
+# deafrica-tools>=2.4.4
 descartes
 dill
 distributed # due to dask-gateway
@@ -42,8 +42,9 @@ docutils
 eodatasets3
 flox
 folium
+fsspec[full]
 gcsfs
-GDAL[numpy]==3.8.5 # should match version in the osgeo/gdal image
+GDAL[numpy]==3.10 # should match version in the base osgeo/gdal image
 geohash2
 geojson
 geopy
@@ -63,6 +64,7 @@ ipython
 ipywidgets
 isort
 jedi
+joblib
 jsonschema
 jupyter_bokeh>=4.0.0
 jupyter-contrib-core
@@ -121,8 +123,9 @@ opencv-python-headless
 osmnx
 # otps
 OWSLib
+packaging
 pandana
-pandas==2.1.4
+pandas
 pandoc
 panel
 param
@@ -147,9 +150,11 @@ pytest-xdist
 python-dateutil
 python-geohash
 pyTMD
+pytz
 pyviz_comms
 pyyaml
 rasterio --no-binary=rasterio
+rasterstats
 rioxarray
 Rtree
 git+https://github.com/daleroberts/s2cloudmask
@@ -164,7 +169,8 @@ spyndex
 sqlalchemy
 structlog
 tensorflow
-tflite-runtime-nightly
+# replace tflite-runtime-nightly
+# ai-edge-litert-nightly # no python 3.12 support
 thredds-crawler # archived
 timescale
 toolz
