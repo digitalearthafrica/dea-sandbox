@@ -1,4 +1,4 @@
-FROM ghcr.io/osgeo/gdal:ubuntu-full-3.8.5
+FROM ghcr.io/osgeo/gdal:ubuntu-full-3.10.0
 
 ENV SHELL=bash \
     DEBIAN_FRONTEND=non-interactive \
@@ -52,10 +52,10 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
   chmod +x /usr/bin/yq
 
 # install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/3.5/pandoc-3.5-1-amd64.deb \
+RUN wget https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6-1-amd64.deb \
   && apt --fix-broken install \
-  && dpkg -i pandoc-3.5-1-amd64.deb \
-  && rm pandoc-3.5-1-amd64.deb
+  && dpkg -i pandoc-3.6-1-amd64.deb \
+  && rm pandoc-3.6-1-amd64.deb
 
 ARG NB_USER="jovyan"
 ARG NB_UID="1000"
@@ -66,6 +66,10 @@ ENV HOME="/home/${NB_USER}"
 ENV VIRTUAL_ENV="/opt/venv"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
+# Delete existing user with UID="${NB_UID}" if it exists
+RUN if grep -q "${NB_UID}" /etc/passwd; then \
+        userdel --remove $(id -un "${NB_UID}"); \
+    fi
 # Create a non-root user
 RUN useradd --no-log-init --create-home --shell /bin/bash --no-user-group --gid $NB_GID --uid $NB_UID  $NB_USER \
     && chown -R $NB_UID:$NB_GID $HOME
