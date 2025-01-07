@@ -1,5 +1,5 @@
 #!/bin/bash
-
+: '
 # Upgrade deafrica-tools to the latest version
 dea_tools_current_version=`pip list |grep deafrica-tools|awk '{print $2}'`
 if [ "${dea_tools_current_version}" != "" ] ; then
@@ -14,6 +14,7 @@ if [ "${dea_tools_current_version}" != "" ] ; then
   fi
 
 fi
+'
 
 [ -n "$GDAL_DATA" ] || {
     export GDAL_DATA=$(gdal-config --datadir)
