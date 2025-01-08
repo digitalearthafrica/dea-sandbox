@@ -280,6 +280,7 @@ colorama==0.4.6
     # via
     #   -r requirements.in
     #   awscli
+    #   eo-tides
     #   nbdime
 colorcet==3.1.0
     # via
@@ -434,6 +435,8 @@ ee-extra==0.0.15
     # via eemont
 eemont==0.3.6
     # via spyndex
+eo-tides==0.0.21
+    # via -r requirements.in
 eodatasets3==0.30.7
     # via
     #   -r requirements.in
@@ -540,6 +543,7 @@ geojson==3.2.0
 geopandas==1.0.1
     # via
     #   access
+    #   eo-tides
     #   esda
     #   libpysal
     #   momepy
@@ -1169,6 +1173,7 @@ numpy==1.26.4
     #   datacube-ows
     #   datashader
     #   eemont
+    #   eo-tides
     #   eodatasets3
     #   esda
     #   flox
@@ -1281,6 +1286,7 @@ odc-dscache==0.2.3
 odc-geo==0.4.8
     # via
     #   -r requirements.in
+    #   eo-tides
     #   odc-stac
 odc-io==0.2.2
     # via
@@ -1382,6 +1388,7 @@ pandas==2.1.4
     #   datacube
     #   datashader
     #   eemont
+    #   eo-tides
     #   esda
     #   flox
     #   geopandas
@@ -1615,6 +1622,7 @@ pyproj==3.7.0
     #   -r requirements.in
     #   cartopy
     #   datacube
+    #   eo-tides
     #   eodatasets3
     #   geopandas
     #   geoviews
@@ -1695,8 +1703,10 @@ python-rapidjson==1.20
     # via eodatasets3
 python-slugify==8.0.4
     # via datacube-ows
-pytmd==2.2.0
-    # via -r requirements.in
+pytmd==2.1.6
+    # via
+    #   -r requirements.in
+    #   eo-tides
 pytz==2024.2
     # via
     #   -r requirements.in
@@ -1875,6 +1885,7 @@ scikit-learn==1.6.0
     #   -r requirements.in
     #   dask-glm
     #   dask-ml
+    #   eo-tides
     #   esda
     #   libpysal
     #   mapclassify
@@ -1894,6 +1905,7 @@ scipy==1.15.0
     #   dask-ml
     #   datacube-ows
     #   datashader
+    #   eo-tides
     #   eodatasets3
     #   esda
     #   flox
@@ -1951,6 +1963,7 @@ shapely==2.0.6
     # via
     #   cartopy
     #   datacube
+    #   eo-tides
     #   eodatasets3
     #   esda
     #   geopandas
@@ -2133,6 +2146,7 @@ tornado-proxy-handlers==0.0.6
 tqdm==4.67.1
     # via
     #   -r requirements.in
+    #   eo-tides
     #   fsspec
     #   momepy
     #   odc-stats
@@ -2255,6 +2269,7 @@ xarray==2025.1.0
     #   datacube
     #   datacube-ows
     #   datashader
+    #   eo-tides
     #   eodatasets3
     #   odc-algo
     #   odc-stac

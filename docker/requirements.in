@@ -22,6 +22,7 @@ cognitojwt # Used for user authentication
 colorama
 contextily
 dask-gateway-server
+eo-tides
 hdstats
 dask-gateway
 dask-image
