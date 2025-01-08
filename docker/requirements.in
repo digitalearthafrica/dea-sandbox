@@ -35,7 +35,7 @@ dask[complete]  # due to dask-gateway
 datacube==1.8.20
 datacube-ows
 datashader
-# deafrica-tools>=2.4.4
+deafrica-tools>=2.5.5
 descartes
 dill
 distributed # due to dask-gateway
