@@ -2,6 +2,7 @@
 access
 affine
 aiobotocore[boto3,awscli]
+aiohttp
 alabaster
 astropy
 autopep8
@@ -9,6 +10,7 @@ black[jupyter]
 bokeh
 boltons
 bottleneck
+branca
 cartopy
 cattrs
 ciso8601
@@ -20,19 +22,20 @@ cognitojwt # Used for user authentication
 colorama
 contextily
 dask-gateway-server
+eo-tides
 hdstats
 dask-gateway
 dask-image
 kombu
 dask-labextension>=7.0.0
 dask-ml
-dask[complete] # due to dask-gateway
+dask[complete]  # due to dask-gateway
 # datacube-stats==1.0.2 # Replaced by odc-stats
 # dataclasses #  backport for Python 3.6
-datacube
+datacube==1.8.20
 datacube-ows
 datashader
-deafrica-tools==2.4.4
+deafrica-tools>=2.5.5
 descartes
 dill
 distributed # due to dask-gateway
@@ -40,7 +43,9 @@ docutils
 eodatasets3
 flox
 folium
-GDAL[numpy]==3.8.5 # should match version in the osgeo/gdal image
+fsspec[full]
+gcsfs
+GDAL[numpy]==3.10 # should match version in the base osgeo/gdal image
 geohash2
 geojson
 geopy
@@ -48,6 +53,7 @@ geoviews
 graphviz
 h5py
 hdmedians --no-binary=hdmedians
+hdstats --no-binary=hdstats
 holoviews
 https://github.com/ubarsc/rios/archive/rios-1.4.10.tar.gz
 ipycanvas
@@ -59,10 +65,12 @@ ipython
 ipywidgets
 isort
 jedi
+joblib
 jsonschema
 jupyter_bokeh>=4.0.0
 jupyter-contrib-core
-jupyter-contrib-nbextensions
+# do not work for jupyter lab and no longer compatible with notebook >=v7
+# jupyter-contrib-nbextensions
 jupyter-nbextensions-configurator
 jupyter-resource-usage>=1.0.0
 jupyter-server
@@ -86,6 +94,8 @@ jupytext
 lark-parser
 latex
 line-profiler
+localtileserver
+rio-tiler
 mapclassify
 memory-profiler
 mypy
@@ -116,8 +126,9 @@ opencv-python-headless
 osmnx
 # otps
 OWSLib
+packaging
 pandana
-pandas==2.1.4
+pandas==2.1.4 # due to sqalchemy dependency for datacube 1.8.x
 pandoc
 panel
 param
@@ -142,26 +153,29 @@ pytest-xdist
 python-dateutil
 python-geohash
 pyTMD
+pytz
 pyviz_comms
 pyyaml
+rasterio --no-binary=rasterio
+rasterstats
 rioxarray
 Rtree
 git+https://github.com/daleroberts/s2cloudmask
 s3fs
 scikit-image
 scikit-learn
-scipy
+scipy==1.14.1 # 1.15.0 is incompatible with hdstats 0.2.1
 seaborn
 setuptools-scm[toml]
-# setuptools < 60.0 # For numpy.distutils
-setuptools==73.0.0
 sidecar
 spyndex
 sqlalchemy
 structlog
 tensorflow
-tflite-runtime-nightly
+# replace tflite-runtime-nightly
+# ai-edge-litert-nightly # no python 3.12 support
 thredds-crawler # archived
+timescale
 toolz
 tqdm
 urbanaccess
@@ -173,5 +187,3 @@ xgboost # used by Dale's s2cloudmask
 yapf
 zarr
 
---no-binary rasterio
---no-binary hdstats
