@@ -6,7 +6,7 @@ ENV SHELL=bash \
     SPATIALITE_LIBRARY_PATH='mod_spatialite.so'
 
 RUN apt update --yes \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt install --yes --fix-missing --no-install-recommends \
     # developer convenience
     fish \
