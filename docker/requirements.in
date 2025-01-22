@@ -69,7 +69,8 @@ joblib
 jsonschema
 jupyter_bokeh>=4.0.0
 jupyter-contrib-core
-jupyter-contrib-nbextensions
+# do not work for jupyter lab and no longer compatible with notebook >=v7
+# jupyter-contrib-nbextensions
 jupyter-nbextensions-configurator
 jupyter-resource-usage>=1.0.0
 jupyter-server
@@ -94,6 +95,7 @@ lark-parser
 latex
 line-profiler
 localtileserver
+rio-tiler
 mapclassify
 memory-profiler
 mypy
