@@ -15,6 +15,7 @@ if [ "${dea_tools_current_version}" != "" ] ; then
 
 fi
 
+
 [ -n "$GDAL_DATA" ] || {
     export GDAL_DATA=$(gdal-config --datadir)
 }
